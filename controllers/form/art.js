@@ -1,0 +1,59 @@
+const res = require('express/lib/response')
+const { default: mongoose, model } = require('mongoose');
+const art = require('../../models/form/art')
+
+const postItem = async (req, res) => {
+    const { body } = req
+    console.log(body)
+    const data = await art.create(body)
+    return res.status(200).send({
+        status: "success",
+        data
+    })
+};
+
+//actualizar items
+const updateItem= async(req,res)=>{
+    const {_id}=req.params
+    const update=req.body
+    try{
+        await art.findByIdAndUpdate(_id, {$set:update},{useFindAndModify: true})
+        res.send(`Actualizaste datos del estudio${_id}`)
+    }catch(error){
+        console.error(`Error al  actualizar los  datos del estudio${_id}`,error)
+        res.status(500).send('Error al actualizar los datos')
+    }
+}
+
+const getItems = async (req, res) => {
+    const data = await art.find({})
+    return res.status(200).send({
+        status: "success",
+        data
+    })
+
+};
+
+const deleteItem = async (req, res) => {
+    const { _id } = req.params;
+    try {
+      const data = await art.deleteOne({ _id })
+      if (data.deletedCount === 0) {
+        return res.status(404).send({
+          status: "error",
+          message: "La art no existe"
+        })
+      }
+      res.send({
+        status: "success",
+        message: "ART eliminada"
+      })
+    } catch (error) {
+      console.error(`error al eliminar la ART`, error)
+      res.status(500).send({
+        status:"error",
+        message:"error al eliminar la ART"
+      })
+    }
+}
+module.exports = { getItems, postItem,updateItem , deleteItem}
