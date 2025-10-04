@@ -152,6 +152,25 @@ console.log('Fecha y hora en UTC:', fechaEnUTC.toString());
 console.log('Fecha y hora en Argentina:', fechaEnArgentina.toString());
 console.log('Hora en Argentina:', fechaEnArgentina.toFormat('HH:mm:ss'));
 
+const { exec } = require('child_process');
+
+// Ruta para actualización automática
+app.post('/api/deploy', (req, res) => {
+  const secret = req.headers['x-github-secret'];
+  if (secret !== process.env.DEPLOY_SECRET) {
+    return res.status(403).send('Forbidden');
+  }
+
+  exec('/usr/local/bin/update-inteli.sh', (err, stdout, stderr) => {
+    if (err) {
+      console.error(`Error en deploy: ${stderr}`);
+      return res.status(500).send('Error al actualizar');
+    }
+    console.log(stdout);
+    res.status(200).send('Actualizado correctamente');
+  });
+});
+
 // Iniciar servidor
 const server = app.listen(port, "0.0.0.0", () => {
   console.log(`Tu app está lista en 0.0.0.0:${port}`);
