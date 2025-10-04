@@ -1,11 +1,20 @@
-const express =require('express')
+const express = require('express');
 const router = express.Router();
-const{getItems,postItem,updateItem}=require('../../controllers/form/aguaBacteriologico')
+const { 
+  getItems, 
+  postItem, 
+  updateItem, 
+  getHistorial, 
+  getHistorialByClienteEst 
+} = require('../../controllers/form/aguaBacteriologico');
 
-router.get('/', getItems)
-router.put('/:_id',updateItem)
-router.post('/',postItem)
+// Activos
+router.get('/', getItems);
+router.post('/', postItem);
+router.put('/:_id', updateItem);
 
+// Historial
+router.get('/historial', getHistorial); 
+router.get('/historial/:clienteId/:establecimientoId', getHistorialByClienteEst);
 
-
-module.exports=router;
+module.exports = router;

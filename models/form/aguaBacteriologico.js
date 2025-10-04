@@ -1,68 +1,34 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const aguabacteriologicoSheme = new mongoose.Schema({
+const aguabacteriologicoSchema = new mongoose.Schema({
+  cliente: [{ type: mongoose.Schema.Types.ObjectId, ref: 'clientes', autopopulate: true }],
+  establecimiento: [{ type: mongoose.Schema.Types.ObjectId, ref: 'establecimientos', autopopulate: true }],
+  dirivado: String,
+  profesional: [{ type: mongoose.Schema.Types.ObjectId, ref: 'profesionales', autopopulate:true }],
+  fechaDerivado: Date,
+  cotizacion: String,
+  fechaCotizacion: Date,
+  estadoCotizacion: String,
+  incluido: String,
+  muestra: String,
+  protocolo: String,
+  fechaMuestra: Date,
+  vencimiento: Date,
+  resultado: { type: String, enum: ['Apto', 'No apto', 'N/A'] },
+  estado: { type: String, enum: ['Vigente', 'Vencido', 'Por vencer', 'Pendiente', 'Antiguo', 'Sin fecha'] },
+  comentarios: String
+});
 
-    cliente: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'clientes',
-        autopopulate: true,
-    }],
-    establecimiento: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'establecimientos',
-        autopopulate: true,
-    }],
-    dirivado:{
-        type:String,
-    },
+aguabacteriologicoSchema.plugin(require('mongoose-autopopulate'));
 
-    profesional: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'profesionales',
-        autopopulate:true
-    }],
-    fechaDerivado:{
-        type:Date
-    },
-    cotizacion: {
-        type: String,
-    },
-    fechaCotizacion: {
-        type: Date,
-    },
-    estadoCotizacion: {
-        type: String,
-    },
-    incluido: {
-        type: String,
-    },
-    muestra: {
-        type: String,
-    },
-    protocolo: {
-        type: String,
-    },
-    fechaMuestra: {
-        type: Date,
-    },
-    vencimiento: {
-        type: Date
-    },
-    resultado: {
-        type: String,
-        enum: ['Apto', 'No apto', 'N/A']
-    },
-    estado: {
-        type: String,
-        enum: ['Vigente', 'Vencido', 'Por vencer', 'Pendiente', 'Antiguo', 'Sin fecha']
-    },
-    comentarios:{
-        type:String
-    }
+// Activo
+const AguaBacteriologico = mongoose.model("aguabacteriologico", aguabacteriologicoSchema);
 
+// Historial (clon + archivadoEn)
+const aguabacteriologicoHistSchema = aguabacteriologicoSchema.clone();
+aguabacteriologicoHistSchema.add({
+  archivadoEn: { type: Date, default: Date.now }
+});
+const AguaBacteriologicoHist = mongoose.model("aguabacteriologico_historial", aguabacteriologicoHistSchema);
 
-}
-)
-aguabacteriologicoSheme.plugin(require('mongoose-autopopulate'));
-
-module.exports = mongoose.model("aguabacteriologico", aguabacteriologicoSheme)
+module.exports = { AguaBacteriologico, AguaBacteriologicoHist };

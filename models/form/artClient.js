@@ -26,7 +26,7 @@ const artClientSheme = new mongoose.Schema({
         type: Date
     },
     declarado:{
-        type:Number
+        type:String
     }
 }
 )

@@ -1,59 +1,91 @@
-const res = require('express/lib/response')
-const { default: mongoose, model } = require('mongoose');
-const art = require('../../models/form/art')
+const { Art, ArtHist } = require('../../models/form/art');
+const { crearConHistorial } = require('../../helpers/historialHelper');
 
+// Crear un nuevo ART (mueve al historial si ya existe para el mismo cliente + establecimiento)
 const postItem = async (req, res) => {
-    const { body } = req
-    console.log(body)
-    const data = await art.create(body)
-    return res.status(200).send({
-        status: "success",
-        data
-    })
+  try {
+    const { cliente, establecimiento, ...datos } = req.body;
+
+    const clienteId = Array.isArray(cliente) ? cliente[0] : cliente;
+    const establecimientoId = Array.isArray(establecimiento) ? establecimiento[0] : establecimiento;
+
+    const nuevo = await crearConHistorial(
+      Art,
+      ArtHist,
+      clienteId,
+      establecimientoId,
+      datos
+    );
+
+    return res.status(201).json({ status: "success", data: nuevo });
+  } catch (error) {
+    console.error("Error al crear ART:", error);
+    res.status(500).json({ status: "error", message: "Error al crear ART" });
+  }
 };
 
-//actualizar items
-const updateItem= async(req,res)=>{
-    const {_id}=req.params
-    const update=req.body
-    try{
-        await art.findByIdAndUpdate(_id, {$set:update},{useFindAndModify: true})
-        res.send(`Actualizaste datos del estudio${_id}`)
-    }catch(error){
-        console.error(`Error al  actualizar los  datos del estudio${_id}`,error)
-        res.status(500).send('Error al actualizar los datos')
+// Actualizar un ART activo
+const updateItem = async (req, res) => {
+  const { _id } = req.params;
+  try {
+    const actualizado = await Art.findByIdAndUpdate(_id, req.body, { new: true });
+    if (!actualizado) {
+      return res.status(404).json({ status: "error", message: "ART no encontrada" });
     }
-}
+    res.json({ status: "success", data: actualizado });
+  } catch (error) {
+    console.error(`Error al actualizar ART ${_id}`, error);
+    res.status(500).json({ status: "error", message: "Error al actualizar ART" });
+  }
+};
 
+// Obtener todos los ART activos
 const getItems = async (req, res) => {
-    const data = await art.find({})
-    return res.status(200).send({
-        status: "success",
-        data
-    })
-
+  try {
+    const data = await Art.find({});
+    res.json({ status: "success", data });
+  } catch (error) {
+    console.error("Error al obtener ART:", error);
+    res.status(500).json({ status: "error", message: "Error al obtener ART" });
+  }
 };
 
+// Eliminar un ART activo
 const deleteItem = async (req, res) => {
-    const { _id } = req.params;
-    try {
-      const data = await art.deleteOne({ _id })
-      if (data.deletedCount === 0) {
-        return res.status(404).send({
-          status: "error",
-          message: "La art no existe"
-        })
-      }
-      res.send({
-        status: "success",
-        message: "ART eliminada"
-      })
-    } catch (error) {
-      console.error(`error al eliminar la ART`, error)
-      res.status(500).send({
-        status:"error",
-        message:"error al eliminar la ART"
-      })
+  const { _id } = req.params;
+  try {
+    const eliminado = await Art.deleteOne({ _id });
+    if (eliminado.deletedCount === 0) {
+      return res.status(404).json({ status: "error", message: "La ART no existe" });
     }
-}
-module.exports = { getItems, postItem,updateItem , deleteItem}
+    res.json({ status: "success", message: "ART eliminada" });
+  } catch (error) {
+    console.error("Error al eliminar ART:", error);
+    res.status(500).json({ status: "error", message: "Error al eliminar ART" });
+  }
+};
+
+// Obtener historial completo
+const getHistorial = async (req, res) => {
+  try {
+    const data = await ArtHist.find({});
+    res.json({ status: "success", data });
+  } catch (error) {
+    console.error("Error al obtener historial ART:", error);
+    res.status(500).json({ status: "error", message: "Error al obtener historial ART" });
+  }
+};
+
+// Obtener historial por cliente y establecimiento
+const getHistorialByClienteEst = async (req, res) => {
+  try {
+    const { clienteId, establecimientoId } = req.params;
+    const data = await ArtHist.find({ cliente: clienteId, establecimiento: establecimientoId });
+    res.json({ status: "success", data });
+  } catch (error) {
+    console.error("Error al obtener historial ART filtrado:", error);
+    res.status(500).json({ status: "error", message: "Error al obtener historial ART filtrado" });
+  }
+};
+
+module.exports = { getItems, postItem, updateItem, deleteItem, getHistorial, getHistorialByClienteEst };
