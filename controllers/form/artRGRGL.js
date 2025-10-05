@@ -1,4 +1,4 @@
-const { Art, ArtHist } = require('../../models/form/art');
+const { Art, ArtHist } = require('../../models/form/artRGRGL');
 const { crearConHistorial } = require('../../helpers/historialHelper');
 
 // Crear nuevo ART con historial

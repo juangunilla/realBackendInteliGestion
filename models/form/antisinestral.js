@@ -1,44 +1,64 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const autopopulate = require('mongoose-autopopulate');
 
-const antisinestralSheme = new mongoose.Schema({
-    //datos del cliente
+// Esquema base (reutilizable)
+const baseSchema = {
+  // Datos del cliente
+  cliente: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'clientes',
+    autopopulate: true,
+  }],
+  establecimiento: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'establecimientos',
+    autopopulate: true,
+  }],
 
-    cliente: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'clientes',
-        autopopulate: true,
-    }],
-    establecimiento: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'establecimientos',
-        autopopulate: true,
-    }],
+  // Datos del profesional derivado
+  profesional: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'profesionales',
+    autopopulate: true,
+  }],
 
-    //datos del profesional derivado 
+  // Datos de las vibraciones / estudio
+  entidad: {
+    type: String,
+  },
+  fecha: {
+    type: Date,
+  },
+  comentario: {
+    type: String,
+  },
 
-    
-    profesional: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'profesionales',
-        autopopulate: true
-    }],
-    
-   
+  // Datos de cotización
+  cotizacion: {
+    type: String,
+  },
+  fechaCotizacion: {
+    type: Date,
+  },
+  estadoCotizacion: {
+    type: String,
+    enum: ['Pendiente', 'Aprobada', 'Rechazada', 'En proceso'],
+  },
+  incluido: {
+    type: String,
+  },
+};
 
-    //datos de las vibraciones
-    entidad:{
-        type:String,
-    },
-    fecha:{
-        type:Date
-    },
-    comentario:{
-        type:String
-    },
-    // datos de cotización 
+// Esquema principal
+const antisinestralSchema = new mongoose.Schema(baseSchema, { timestamps: true });
+antisinestralSchema.plugin(autopopulate);
 
-}
-)
-antisinestralSheme.plugin(require('mongoose-autopopulate'));
+// Esquema historial
+const antisinestralHistSchema = new mongoose.Schema(baseSchema, { timestamps: true });
+antisinestralHistSchema.plugin(autopopulate);
 
-module.exports = mongoose.model("antisinestral", antisinestralSheme)
+// Modelos
+const Antisinestral = mongoose.model('Antisinestral', antisinestralSchema);
+const AntisinestralHist = mongoose.model('AntisinestralHist', antisinestralHistSchema);
+
+module.exports = { Antisinestral, AntisinestralHist };

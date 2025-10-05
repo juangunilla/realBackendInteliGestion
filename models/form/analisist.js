@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
-const { setVencimiento } = require('../../middlewares/venci.'); // Importa el middleware
+const autopopulate = require('mongoose-autopopulate');
+const { setVencimiento } = require('../../middlewares/venci.'); // Middleware
 
-// Define el esquema
-const analistSchema = new mongoose.Schema({
+// Esquema base (se reutiliza en ambos modelos)
+const baseSchema = {
   cliente: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'clientes',
@@ -14,25 +15,32 @@ const analistSchema = new mongoose.Schema({
     autopopulate: true,
   }],
   confeccion: {
-    type: Date
+    type: Date,
   },
   vencimiento: {
-    type: Date
+    type: Date,
   },
-  observacion:{
-    type:String
-  }
-}, {
-  timestamps: true  // Habilita las marcas de tiempo automáticas
+  observacion: {
+    type: String,
+  },
+};
+
+// Esquema principal
+const analisisSchema = new mongoose.Schema(baseSchema, {
+  timestamps: true,
 });
+setVencimiento(analisisSchema);
+analisisSchema.plugin(autopopulate);
 
-// Aplica el middleware
-setVencimiento(analistSchema);
+// Esquema historial (idéntico, también con middleware)
+const analisisHistSchema = new mongoose.Schema(baseSchema, {
+  timestamps: true,
+});
+setVencimiento(analisisHistSchema);
+analisisHistSchema.plugin(autopopulate);
 
-// Añade el plugin de autopopulación
-analistSchema.plugin(require('mongoose-autopopulate'));
+// Modelos
+const Analisis = mongoose.model('Analisis', analisisSchema);
+const AnalisisHist = mongoose.model('AnalisisHist', analisisHistSchema);
 
-// Exporta el modelo
-const analisis = mongoose.model("analisis", analistSchema);
-
-module.exports = analisis;
+module.exports = { Analisis, AnalisisHist };

@@ -7,7 +7,7 @@ const {
   deleteItem, 
   getHistorial, 
   getHistorialByClienteEst 
-} = require('../../controllers/form/art');
+} = require('../../controllers/form/artRGRGL');
 
 // ----- ART activos -----
 router.get('/', getItems);             // Obtener todos los ART activos

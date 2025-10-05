@@ -102,6 +102,7 @@ app.use('/api/capacitaciones', require('./routes/form/capacitaciones'));
 app.use('/api/iluminacionyruido', require('./routes/form/iluminacionyruido'));
 app.use('/api/ergonomico', require('./routes/form/ergonomico'));
 app.use('/api/art', require('./routes/form/art'));
+app.use('/api/artrgrgl', require('./routes/form/artRGRGL'));
 app.use('/api/cargadefuego', require('./routes/form/cargaDeFuego'));
 app.use('/api/vibracion', require('./routes/form/vibracion'));
 app.use('/api/antisinestral', require('./routes/form/antisinestral'));
