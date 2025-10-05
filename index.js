@@ -76,6 +76,9 @@ console.log(health);
 
 
 
+const fileUpload = require('express-fileupload');
+app.use(fileUpload());
+app.use('/api/bakups', require('./routes/bakups.js'));
 
 
  
