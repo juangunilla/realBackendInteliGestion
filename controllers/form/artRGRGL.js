@@ -1,7 +1,7 @@
-const { Art, ArtHist } = require('../../models/form/artRGRGL');
+const { Artrgrgl, ArtrgrglHist } = require('../../models/form/artrgrgl');
 const { crearConHistorial } = require('../../helpers/historialHelper');
 
-// Crear nuevo ART con historial
+// Crear nuevo ARTRGRGL con historial
 const postItem = async (req, res) => {
   try {
     const { cliente, establecimiento, ...datos } = req.body;
@@ -10,8 +10,8 @@ const postItem = async (req, res) => {
     const establecimientoId = Array.isArray(establecimiento) ? establecimiento[0] : establecimiento;
 
     const nuevo = await crearConHistorial(
-      Art,
-      ArtHist,
+      Artrgrgl,
+      ArtrgrglHist,
       clienteId,
       establecimientoId,
       datos
@@ -19,60 +19,60 @@ const postItem = async (req, res) => {
 
     return res.status(201).json({ status: 'success', data: nuevo });
   } catch (error) {
-    console.error('Error al crear ART:', error);
-    res.status(500).json({ status: 'error', message: 'Error al crear ART' });
+    console.error('Error al crear ARTRGRGL:', error);
+    res.status(500).json({ status: 'error', message: error.message });
   }
 };
 
-// Actualizar ART activo
+// Actualizar ARTRGRGL activo
 const updateItem = async (req, res) => {
   const { _id } = req.params;
   try {
-    const actualizado = await Art.findByIdAndUpdate(_id, req.body, { new: true });
+    const actualizado = await Artrgrgl.findByIdAndUpdate(_id, req.body, { new: true });
     if (!actualizado) {
-      return res.status(404).json({ status: 'error', message: 'ART no encontrada' });
+      return res.status(404).json({ status: 'error', message: 'ARTRGRGL no encontrada' });
     }
     res.json({ status: 'success', data: actualizado });
   } catch (error) {
-    console.error(`Error al actualizar ART ${_id}`, error);
-    res.status(500).json({ status: 'error', message: 'Error al actualizar ART' });
+    console.error(`Error al actualizar ARTRGRGL ${_id}`, error);
+    res.status(500).json({ status: 'error', message: 'Error al actualizar ARTRGRGL' });
   }
 };
 
-// Obtener todos los ART activos
+// Obtener todos los ARTRGRGL activos
 const getItems = async (req, res) => {
   try {
-    const data = await Art.find({});
+    const data = await Artrgrgl.find({});
     res.json({ status: 'success', data });
   } catch (error) {
-    console.error('Error al obtener ART:', error);
-    res.status(500).json({ status: 'error', message: 'Error al obtener ART' });
+    console.error('Error al obtener ARTRGRGL:', error);
+    res.status(500).json({ status: 'error', message: 'Error al obtener ARTRGRGL' });
   }
 };
 
-// Eliminar ART activo
+// Eliminar ARTRGRGL activo
 const deleteItem = async (req, res) => {
   const { _id } = req.params;
   try {
-    const eliminado = await Art.deleteOne({ _id });
+    const eliminado = await Artrgrgl.deleteOne({ _id });
     if (eliminado.deletedCount === 0) {
-      return res.status(404).json({ status: 'error', message: 'La ART no existe' });
+      return res.status(404).json({ status: 'error', message: 'La ARTRGRGL no existe' });
     }
-    res.json({ status: 'success', message: 'ART eliminada' });
+    res.json({ status: 'success', message: 'ARTRGRGL eliminada' });
   } catch (error) {
-    console.error('Error al eliminar ART:', error);
-    res.status(500).json({ status: 'error', message: 'Error al eliminar ART' });
+    console.error('Error al eliminar ARTRGRGL:', error);
+    res.status(500).json({ status: 'error', message: 'Error al eliminar ARTRGRGL' });
   }
 };
 
 // Obtener historial completo
 const getHistorial = async (req, res) => {
   try {
-    const data = await ArtHist.find({});
+    const data = await ArtrgrglHist.find({});
     res.json({ status: 'success', data });
   } catch (error) {
-    console.error('Error al obtener historial ART:', error);
-    res.status(500).json({ status: 'error', message: 'Error al obtener historial ART' });
+    console.error('Error al obtener historial ARTRGRGL:', error);
+    res.status(500).json({ status: 'error', message: 'Error al obtener historial ARTRGRGL' });
   }
 };
 
@@ -80,14 +80,14 @@ const getHistorial = async (req, res) => {
 const getHistorialByClienteEst = async (req, res) => {
   try {
     const { clienteId, establecimientoId } = req.params;
-    const data = await ArtHist.find({
+    const data = await ArtrgrglHist.find({
       cliente: clienteId,
       establecimiento: establecimientoId,
     });
     res.json({ status: 'success', data });
   } catch (error) {
-    console.error('Error al obtener historial ART filtrado:', error);
-    res.status(500).json({ status: 'error', message: 'Error al obtener historial ART filtrado' });
+    console.error('Error al obtener historial ARTRGRGL filtrado:', error);
+    res.status(500).json({ status: 'error', message: 'Error al obtener historial ARTRGRGL filtrado' });
   }
 };
 
