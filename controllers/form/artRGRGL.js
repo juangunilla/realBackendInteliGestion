@@ -1,4 +1,4 @@
-const { Artrgrgl, ArtrgrglHist } = require('../../models/form/artrgrgl');
+const { Artrgrgl, ArtrgrglHist } = require('../../models/form/artRGRGL');
 const { crearConHistorial } = require('../../helpers/historialHelper');
 
 // Crear nuevo ARTRGRGL con historial
