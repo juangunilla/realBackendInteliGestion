@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const autopopulate = require('mongoose-autopopulate');
 
 // Esquema base (reutilizable)
-const artrgrglBase = {
+const ArtrgrglSchema = {
   cliente: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'clientes',
@@ -52,19 +52,20 @@ const artrgrglBase = {
   },
 };
 
-// Esquema principal
-const artrgrglSchema = new mongoose.Schema(artrgrglBase, { timestamps: true });
-artrgrglSchema.plugin(autopopulate);
+// Modelo principal
+const artSchema = new mongoose.Schema(ArtrgrglSchema, { timestamps: true });
+artSchema.plugin(autopopulate);
 
-// Esquema historial (idéntico + campo archivadoEn)
-const artrgrglHistSchema = new mongoose.Schema(
-  { ...artrgrglBase, archivadoEn: { type: Date, default: Date.now } },
+// Modelo historial (clonado + fecha de archivo)
+const artHistSchema = new mongoose.Schema(
+  { ...ArtrgrglSchema, archivadoEn: { type: Date, default: Date.now } },
   { timestamps: true }
 );
-artrgrglHistSchema.plugin(autopopulate);
+artHistSchema.plugin(autopopulate);
 
-// Exporta ambos modelos con nombre Artrgrgl
-const Artrgrgl = mongoose.model('Artrgrgl', artrgrglSchema);
-const ArtrgrglHist = mongoose.model('ArtrgrglHist', artrgrglHistSchema);
+// Exporta ambos modelos
+const Artrgrgl = mongoose.model('Artrgrgl', artSchema);
+const ArtrgrglHist = mongoose.model('ArtrgrglHist', artHistSchema);
+
 
 module.exports = { Artrgrgl, ArtrgrglHist };
