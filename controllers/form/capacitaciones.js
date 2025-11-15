@@ -1,11 +1,18 @@
-const res = require('express/lib/response')
-const { default: mongoose, model } = require('mongoose');
+const { registrarAccion } = require('../../helpers/auditHelper');
 const capacitaciones = require('../../models/form/capacitaciones')
 
 const postItem = async (req, res) => {
     const { body } = req
     console.log(body)
     const data = await capacitaciones.create(body)
+    await registrarAccion({
+        user: req.user,
+        action: 'create',
+        entity: 'capacitaciones',
+        entityId: data._id,
+        description: 'Creación de estudio de capacitaciones',
+        payload: body,
+    });
     return res.status(200).send({
         status: "success",
         data

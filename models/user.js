@@ -1,6 +1,7 @@
 const { create } = require('express-handlebars');
 const { type } = require('express/lib/response');
 const mongoose = require('mongoose');
+const { ALL_ROLES } = require('../config/roles');
 
 const userSchema = new mongoose.Schema(
     {
@@ -18,8 +19,9 @@ const userSchema = new mongoose.Schema(
         },
         rol: {
             type: String,
-            enum: ["admin", "seguidor", "profe"],
+            enum: ALL_ROLES,
             required: true,
+            default: "seguidor",
         },
         image: {
             type: String,
@@ -49,6 +51,14 @@ const userSchema = new mongoose.Schema(
             ],
             default: [], // Define un array vacío por defecto
           },
+        online: {
+            type: Boolean,
+            default: false,
+        },
+        lastSeen: {
+            type: Date,
+            default: Date.now,
+        },
           
         
     },

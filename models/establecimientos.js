@@ -78,7 +78,26 @@ const establecimientosSheme= new mongoose.Schema({
     },
     comentarios:{
         type:String
-    }
+    },
+    historialProfesionales:[
+        {
+            profesional:{
+                type:mongoose.Types.ObjectId,
+                ref:"profesionales",
+                autopopulate:true
+            },
+            desde:{
+                type:Date,
+                default:Date.now
+            },
+            hasta:{
+                type:Date
+            },
+            comentario:{
+                type:String
+            }
+        }
+    ]
 },
 {
     timestamps:true,

@@ -9,6 +9,7 @@ const cron = require('node-cron');
 const reminderScript = require('./scripts/reminder');
 const { DateTime } = require('luxon');
 const mongoose = require('mongoose'); // Asegúrate de tener esto importado
+const AuditLog = require('./models/auditLog');
 
 const app = express();
 const now = new Date();
@@ -93,10 +94,14 @@ app.use('/api/establecimientos', require('./routes/establecimientos'));
 app.use('/api/profesionales', require('./routes/profesionales'));
 app.use('/api/proveedores', require('./routes/proveedores'));
 app.use('/api/ciuu', require('./routes/ciuu'));
+app.use('/api/audit', require('./routes/auditLogs'));
 app.use('/api/aguabac', require('./routes/form/aguaBacteriologico'));
 app.use('/api/fisicoquimico', require('./routes/form/aguaFisicoQuimico'));
 app.use('/api/pat', require('./routes/form/pat'));
-app.use('/api/asp', require('./routes/form/asp'));
+// Rutas ASP divididas en tres estudios
+app.use('/api/asp/ensayo', require('./routes/form/aspEnsayo'));
+app.use('/api/asp/hidraulica', require('./routes/form/aspHidraulica'));
+app.use('/api/asp/canerias', require('./routes/form/aspCanerias'));
 app.use('/api/ot', require('./routes/form/ot'));
 app.use('/api/capacitaciones', require('./routes/form/capacitaciones'));
 app.use('/api/iluminacionyruido', require('./routes/form/iluminacionyruido'));
@@ -116,6 +121,7 @@ app.use('/api/leysap', require('./routes/form/leysap.js'));
 app.use('/api/entregaepp', require('./routes/form/entregaepp.js'));
 app.use('/api/estudioh', require('./routes/form/estudiohumo.js'));
 app.use('/api/verificacion', require('./routes/form/verificacion.js'));
+app.use('/api/chat', require('./routes/chat'));
 
 
 // Al final de index.js o app.js
@@ -135,11 +141,25 @@ dbConnect();
 console.log('La hora del servidor es: ', now.toString());
 console.log('La hora UTC es: ', now.toUTCString());
 
-// Ejecuta el script de recordatorio junto con tu servidor
-cron.schedule('15 20 * * *', () => {
-  console.log('Ejecutando recordatorio de tareas por vencer...');
-  reminderScript.checkDueTasks();
+// cron.schedule('15 20 * * *', () => {
+//   console.log('Ejecutando recordatorio de tareas por vencer...');
+//   reminderScript.checkDueTasks();
+// });
+
+cron.schedule('0 3 * * *', async () => {
+  const retentionWindow = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+  try {
+    const { deletedCount } = await AuditLog.deleteMany({
+      createdAt: { $lt: retentionWindow },
+    });
+    console.log(
+      `[AUDIT CLEANUP] ${deletedCount} registros eliminados anteriores a ${retentionWindow.toISOString()}`
+    );
+  } catch (error) {
+    console.error('[AUDIT CLEANUP] Falló la limpieza:', error);
+  }
 });
+
 
 // Manejo de zonas horarias
 const fechaUTC = "2024-06-01T19:15:34.230Z";

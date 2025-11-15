@@ -7,19 +7,18 @@ const nodemailer = require("nodemailer");
 const jwtService = require("../services/jwt");
 const fs = require('fs');
 const path = require('path');
-const webPush = require('web-push');
+const webPush = require('../config/webpush');
+const { ALL_ROLES, REGISTRATION_ROLES, SUPERADMIN_ROLE, SUPER_ADMIN_EMAIL } = require('../config/roles');
 
-// Configura las claves VAPID para Web Push
-const vapidKeys = {
-  publicKey: 'BCR9D5XjZRJ9KQaNdcnJieWn2xOLMCMLAxJOAjUE6Hs0QlwvIgZ3sD81_TukGuoiukt-sPD93lAr3Qv9ufePD_Y',
-  privateKey: 'bcWZPnrYdrwsS6ktpCHowwwqzAb8h54d2dfAU7SJT6Q'
+const normalizeEmail = (value) => {
+  if (!value) return '';
+  return value.toLowerCase().trim();
 };
 
-webPush.setVapidDetails(
-  'mailto:gunillajuan@gmail.com',
-  vapidKeys.publicKey,
-  vapidKeys.privateKey
-);
+const sanitizeRole = (value) => {
+  if (!value) return undefined;
+  return value.toLowerCase().trim();
+};
 
 const getItems = async (req, res) => {
   const { body } = req;
@@ -30,7 +29,8 @@ const getItems = async (req, res) => {
       message: "Faltan datos por enviar o no estas registrado"
     });
   } else {
-    const data = await user.findOne({ correo: body.correo });
+    const normalizedCorreo = normalizeEmail(correo);
+    const data = await user.findOne({ correo: normalizedCorreo });
     if (!data || !data.password) {
       console.log("Correo inválido o no registrado");
       return res.status(404).send({
@@ -43,6 +43,19 @@ const getItems = async (req, res) => {
       console.log("Contraseña incorrecta");
       res.status(404).send({ status: "error", message: "contraseña incorrecta" });
     } else {
+      const normalizedUserCorreo = normalizeEmail(data.correo);
+      let userDocMutated = false;
+      if (normalizedUserCorreo !== data.correo) {
+        data.correo = normalizedUserCorreo;
+        userDocMutated = true;
+      }
+      if (normalizedUserCorreo === SUPER_ADMIN_EMAIL && data.rol !== SUPERADMIN_ROLE) {
+        data.rol = SUPERADMIN_ROLE;
+        userDocMutated = true;
+      }
+      if (userDocMutated) {
+        await data.save();
+      }
       const token = jwtService.createTokens(data);
       res.header('X-User-Rol', data.rol);
       res.status(200).send({
@@ -97,7 +110,8 @@ const forgotPassword = async (req, res) => {
         return res.status(400).send({ status: "error", message: "El correo es obligatorio." });
     }
 
-    const data = await user.findOne({ correo });
+    const normalizedCorreo = normalizeEmail(correo);
+    const data = await user.findOne({ correo: normalizedCorreo });
     if (!data) {
         return res.status(404).send({ status: "error", message: "Usuario no encontrado." });
     }
@@ -182,8 +196,26 @@ const resetPassword = async (req, res) => {
 
 const postItem = async (req, res) => {
   const { body } = req;
-  const { nombreyapellido, correo } = req.body;
-  const existingUser = await user.findOne({ correo });
+  const { nombreyapellido } = req.body;
+  body.correo = normalizeEmail(body.correo);
+  if (!body.correo) {
+    return res.status(400).send({
+      status: 'error',
+      message: 'El correo es obligatorio.',
+    });
+  }
+
+  const requestedRole = sanitizeRole(body.rol);
+  if (requestedRole === SUPERADMIN_ROLE) {
+    return res.status(403).send({
+      status: 'error',
+      message: 'El rol superadmin solo puede ser asignado por el superadministrador.',
+    });
+  }
+
+  body.rol = REGISTRATION_ROLES.includes(requestedRole) ? requestedRole : 'seguidor';
+
+  const existingUser = await user.findOne({ correo: body.correo });
   if (existingUser) {
     return res.status(400).send({
       status: 'Ya tienes una cuenta',
@@ -332,11 +364,13 @@ const updateAvatar = async (req, res) => {
 const updateCorreo = async (req, res) => {
   const { _id } = req.params;
   const { correo, confirmCorreo } = req.body;
-  if (correo !== confirmCorreo) {
+  const normalizedCorreo = normalizeEmail(correo);
+  const normalizedConfirmCorreo = normalizeEmail(confirmCorreo);
+  if (normalizedCorreo !== normalizedConfirmCorreo) {
     return res.status(400).json({ error: "los correos no coinciden." });
   }
   try {
-    await user.findByIdAndUpdate(_id, { correo: correo });
+    await user.findByIdAndUpdate(_id, { correo: normalizedCorreo });
     return res.status(200).send({ status: "success", message: "El correo fue cambiado con éxito." });
   } catch (error) {
     console.log('Error al modificar el correo:', error);
@@ -369,6 +403,47 @@ const getUsuarios = async (req, res) => {
     status: "success",
     usuarios: data
   });
+};
+
+const changeUserRole = async (req, res) => {
+  const { _id } = req.params;
+  const { rol } = req.body;
+  const requestedRole = sanitizeRole(rol);
+
+  if (!requestedRole || !ALL_ROLES.includes(requestedRole)) {
+    return res.status(400).send({
+      status: "error",
+      message: "Rol inválido o no permitido",
+    });
+  }
+
+  try {
+    const targetUser = await user.findById(_id);
+    if (!targetUser) {
+      return res.status(404).send({
+        status: "error",
+        message: "Usuario no encontrado",
+      });
+    }
+
+    targetUser.rol = requestedRole;
+    await targetUser.save();
+
+    return res.status(200).send({
+      status: "success",
+      data: {
+        id: targetUser._id,
+        correo: targetUser.correo,
+        rol: targetUser.rol,
+      },
+    });
+  } catch (error) {
+    console.error("Error actualizando rol de usuario:", error);
+    return res.status(500).send({
+      status: "error",
+      message: "Error interno al actualizar el rol del usuario.",
+    });
+  }
 };
 const saveSubscription = async (req, res) => {
   const { userId, subscription } = req.body;
@@ -553,6 +628,7 @@ const sendNotificationsToAll = async (req, res) => {
 module.exports = {
   getItems,
   getUsuarios,
+  changeUserRole,
   postItem,
   updateItem,
   profile,

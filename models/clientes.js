@@ -1,15 +1,18 @@
-const { create } = require('express-handlebars')
 const mongoose= require('mongoose')
 
 const clientesSheme= new mongoose.Schema({
     rozonSocial:{
-        type:String
+        type:String,
+        trim: true,
+        alias: 'razonSocial',
     },
     nombreFantasia:{
-        type:String
+        type:String,
+        trim: true,
     },
     domicilio:{
-        type:String
+        type:String,
+        trim: true,
     },
     cuit:{
         type:Number
@@ -22,8 +25,19 @@ const clientesSheme= new mongoose.Schema({
 },
 {
     timestamps:true,
-    versionKey:false
+    versionKey:false,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
 }
 )
+
+clientesSheme.virtual('razonSocial')
+    .get(function() {
+        return this.rozonSocial;
+    })
+    .set(function(value) {
+        this.rozonSocial = value;
+    });
+
 clientesSheme.plugin(require('mongoose-autopopulate'));
 module.exports=mongoose.model("clientes",clientesSheme)

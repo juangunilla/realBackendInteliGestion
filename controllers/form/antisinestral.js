@@ -9,12 +9,24 @@ const postItem = async (req, res) => {
     const clienteId = Array.isArray(cliente) ? cliente[0] : cliente;
     const establecimientoId = Array.isArray(establecimiento) ? establecimiento[0] : establecimiento;
 
+    const payload = {
+      cliente: clienteId,
+      establecimiento: establecimientoId,
+      ...datos,
+    };
+
     const nuevo = await crearConHistorial(
       Antisinestral,
       AntisinestralHist,
       clienteId,
       establecimientoId,
-      datos
+      datos,
+      {
+        user: req.user,
+        entity: "antisinestral",
+        description: "Creación de estudio antisinestral",
+        payload,
+      }
     );
 
     return res.status(200).send({ status: "success", data: nuevo });

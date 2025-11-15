@@ -9,12 +9,24 @@ const postItem = async (req, res) => {
     const clienteId = Array.isArray(cliente) ? cliente[0] : cliente;
     const establecimientoId = Array.isArray(establecimiento) ? establecimiento[0] : establecimiento;
 
+    const payload = {
+      cliente: clienteId,
+      establecimiento: establecimientoId,
+      ...datos,
+    };
+
     const nuevo = await crearConHistorial(
       Asp,
       AspHist,
       clienteId,
       establecimientoId,
-      datos
+      datos,
+      {
+        user: req.user,
+        entity: "asp",
+        description: "Creación de ASP",
+        payload,
+      }
     );
 
     return res.status(201).json({ status: 'success', data: nuevo });

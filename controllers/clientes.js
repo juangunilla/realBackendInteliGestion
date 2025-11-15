@@ -31,20 +31,30 @@ const postItem = async (req, res) => {
 
 
 
+const escapeRegex = (value = '') => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
 const getItems = async (req, res) => {
   try {
     const { page = 1, limit = 500, search = '' } = req.query;
+    const normalizedSearch = search?.toString().trim();
 
-    const searchQuery = search
-      ? {
-          $or: [
-            { razonSocial: { $regex: search, $options: 'i' } },
-            { nombreFantasia: { $regex: search, $options: 'i' } },
-            { domicilio: { $regex: search, $options: 'i' } },
-            ...(!isNaN(Number(search)) ? [{ cuit: Number(search) }] : [])
-          ]
-        }
-      : {};
+    let searchQuery = {};
+
+    if (normalizedSearch) {
+      const safeRegex = new RegExp(escapeRegex(normalizedSearch), 'i');
+      const orConditions = [
+        { rozonSocial: safeRegex },
+        { razonSocial: safeRegex },
+        { nombreFantasia: safeRegex },
+        { domicilio: safeRegex },
+      ];
+
+      if (/^\d+$/.test(normalizedSearch)) {
+        orConditions.push({ cuit: Number(normalizedSearch) });
+      }
+
+      searchQuery = { $or: orConditions };
+    }
 
     const total = await clientes.countDocuments(searchQuery);
     const clientesData = await clientes

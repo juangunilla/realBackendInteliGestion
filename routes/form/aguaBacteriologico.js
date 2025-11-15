@@ -1,4 +1,5 @@
 const express = require('express');
+const check = require('../../middlewares/auth');
 const router = express.Router();
 const { 
   getItems, 
@@ -9,9 +10,9 @@ const {
 } = require('../../controllers/form/aguaBacteriologico');
 
 // Activos
-router.get('/', getItems);
-router.post('/', postItem);
-router.put('/:_id', updateItem);
+router.get('/', check.auth, getItems);
+router.post('/', check.auth, postItem);
+router.put('/:_id', check.auth, updateItem);
 
 // Historial
 router.get('/historial', getHistorial); 

@@ -1,9 +1,12 @@
 // Middleware para verificar el rol de administrador
+const { SUPERADMIN_ROLE } = require('../config/roles');
+
 function isAdmin(req, res, next) {
-    // Supongamos que el rol del usuario se almacena en req.user.rol
-    if (req.user.rol !== 'admin') {
+    if (![ 'admin', SUPERADMIN_ROLE ].includes(req.user?.rol)) {
       return res.status(403).json({ message: 'No tienes permiso para realizar esta acción.' });
     }
     next();
-  }
+}
+
+module.exports = isAdmin;
   

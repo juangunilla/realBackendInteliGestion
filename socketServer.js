@@ -1,6 +1,55 @@
 const socketIO = require('socket.io');
 const users = require('./models/user');
 
+let ioInstance = null;
+const userSockets = new Map(); // userId -> Set(socketId)
+
+const getSocketsForUser = (userId) => userSockets.get(String(userId)) || new Set();
+
+const addSocketForUser = (userId, socketId) => {
+  const key = String(userId);
+  if (!userSockets.has(key)) {
+    userSockets.set(key, new Set());
+  }
+  userSockets.get(key).add(socketId);
+};
+
+const removeSocketForUser = (userId, socketId) => {
+  const key = String(userId);
+  if (!userSockets.has(key)) return;
+  const sockets = userSockets.get(key);
+  sockets.delete(socketId);
+  if (sockets.size === 0) {
+    userSockets.delete(key);
+  }
+};
+
+async function emitPresence() {
+  if (!ioInstance) return;
+  const presence = await users
+    .find({}, 'nombreyapellido image online lastSeen')
+    .lean();
+  ioInstance.emit('chat:presence', presence);
+}
+
+async function markUserStatus(userId, online) {
+  if (!userId) return;
+  await users.findByIdAndUpdate(
+    userId,
+    { online, lastSeen: new Date() },
+    { new: true }
+  );
+  emitPresence().catch((err) => console.error('Error emitiendo presencia', err));
+}
+
+function emitToUser(userId, event, payload) {
+  if (!ioInstance) return;
+  const sockets = getSocketsForUser(userId);
+  sockets.forEach((socketId) => {
+    ioInstance.to(socketId).emit(event, payload);
+  });
+}
+
 function configureSocketServer(server) {
   const io = socketIO(server, {
     cors: {
@@ -9,59 +58,34 @@ function configureSocketServer(server) {
       allowedHeaders: ['Content-Type', 'Authorization'],
     },
   });
+  ioInstance = io;
 
-  const connectedUsers = new Map(); // Almacenar los IDs de los usuarios conectados y sus nombres
+  io.on('connection', (socket) => {
+    socket.on('chat:setUser', async (userPayload) => {
+      const { _id, nombreyapellido } = userPayload || {};
+      if (!_id) return;
+      socket.data.userId = _id;
+      socket.data.nombre = nombreyapellido || 'Usuario';
+      addSocketForUser(_id, socket.id);
+      await markUserStatus(_id, true);
+    });
 
-  io.on('connection', async (socket) => {
-    console.log('Nuevo cliente conectado:', socket.id);
-
-    try {
-      // Obtener la lista de usuarios desde el modelo users
-      const userListFromDatabase = await users.find({}, 'nombreyapellido');
-      console.log('Lista de usuarios:', userListFromDatabase);
-
-      // Escuchar el evento 'setUser' del cliente y agregar el usuario al mapa
-      socket.on('setUser', (user) => {
-        connectedUsers.set(socket.id, user.nombreyapellido);
-        emitUserList();
-      });
-
-      // Escuchar el evento 'sendMessageToUser' del cliente y procesar el mensaje
-      socket.on('sendMessageToUser', ({ message, to }) => {
-        const senderUsername = connectedUsers.get(socket.id);
-        const recipientSocketId = [...connectedUsers.entries()].find((entry) => entry[1] === to)?.[0];
-        
-        if (recipientSocketId) {
-          io.to(recipientSocketId).emit('receivedMessage', { senderUsername, message });
-;
+    socket.on('disconnect', async () => {
+      const { userId } = socket.data || {};
+      if (userId) {
+        removeSocketForUser(userId, socket.id);
+        if (getSocketsForUser(userId).size === 0) {
+          await markUserStatus(userId, false);
         }
-      });
-      
-
-      // Escuchar el evento 'sendMessage' del cliente y procesar el mensaje
-      socket.on('sendMessage', (message) => {
-        const senderUsername = connectedUsers.get(socket.id); // Obtener el nombre del remitente
-        io.emit('receivedMessage', { senderUsername, message });
-        console.log(message);
-      });
-
-      // Escuchar el evento 'disconnect' del cliente y eliminar el usuario desconectado del mapa
-      socket.on('disconnect', () => {
-        console.log('Cliente desconectado:', socket.id);
-        connectedUsers.delete(socket.id);
-        emitUserList();
-      });
-
-      // Emitir la lista de usuarios conectados al cliente recién conectado
-      emitUserList();
-    } catch (error) {
-      console.error('Error al obtener la lista de usuarios:', error);
-    }
+      }
+    });
   });
+}
 
-  function emitUserList() {
-    io.emit('userList', Array.from(connectedUsers.values()));
-  }
+function getIO() {
+  return ioInstance;
 }
 
 module.exports = configureSocketServer;
+module.exports.getIO = getIO;
+module.exports.emitToUser = emitToUser;

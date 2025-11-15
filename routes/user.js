@@ -4,6 +4,7 @@ const multer = require('multer');
 const { 
   getItems, 
   getUsuarios, 
+  changeUserRole,
   postItem, 
   profile, 
   updateItem, 
@@ -18,6 +19,7 @@ const {
   sendNotificationsToAll
 } = require('../controllers/user');
 const check = require('../middlewares/auth');
+const { requireSuperAdminOwner } = require('../middlewares/superAdmin');
 
 // Configuración de subida
 const storage = multer.diskStorage({
@@ -46,6 +48,8 @@ router.put('/avatar/:_id', updateAvatar);
 router.get('/avatar/:file', avatar);
 router.post('/forgot-password', forgotPassword);
 router.post('/reset-password/:token', resetPassword); // Nueva ruta para restablecer la contraseña
+
+router.put('/role/:_id', [check.auth, requireSuperAdminOwner], changeUserRole);
 
 // Rutas para notificaciones Push
 router.post('/save-subscription', saveSubscription); // Ruta para guardar la suscripción

@@ -7,6 +7,7 @@ const createTokens = (user) => {
     id: user.id,
     nombreyapellido: user.nombreyapellido,
     rol: user.rol,
+    correo: user.correo,
     image: user.image,
     iat: Math.floor(Date.now() / 1000), // Fecha actual en segundos
     exp: Math.floor(Date.now() / 1000) + (30 * 24 * 60 * 60), // Expiración en 30 días
