@@ -52,6 +52,8 @@ function emitToUser(userId, event, payload) {
 
 function configureSocketServer(server) {
   const io = socketIO(server, {
+    // Use the same /api prefix that the rest of the backend exposes.
+    path: '/api/socket.io',
     cors: {
       origin: '*',
       methods: ['GET', 'POST', 'PUT', 'DELETE'],
