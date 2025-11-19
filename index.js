@@ -94,6 +94,7 @@ app.use('/api/establecimientos', require('./routes/establecimientos'));
 app.use('/api/profesionales', require('./routes/profesionales'));
 app.use('/api/proveedores', require('./routes/proveedores'));
 app.use('/api/ciuu', require('./routes/ciuu'));
+app.use('/api/metrics', require('./routes/metrics'));
 app.use('/api/audit', require('./routes/auditLogs'));
 app.use('/api/aguabac', require('./routes/form/aguaBacteriologico'));
 app.use('/api/fisicoquimico', require('./routes/form/aguaFisicoQuimico'));

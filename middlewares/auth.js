@@ -15,8 +15,11 @@ exports.auth = (req, res, next) => {
     });
   }
 
-  // Limpiar el token
-  let token = req.headers.authorization.replace(/['"]+/g, '');
+  // Limpiar el token (admite formato "Bearer <token>")
+  let token = req.headers.authorization.trim().replace(/['"]+/g, '');
+  if (token.toLowerCase().startsWith('bearer ')) {
+    token = token.slice(7).trim();
+  }
 
   // Decodificar token
   try {
