@@ -27,6 +27,14 @@ const userSchema = new mongoose.Schema(
             type: String,
             default: "default.png",
         },
+        mustCompleteProfile: {
+            type: Boolean,
+            default: true,
+        },
+        passwordChanged: {
+            type: Boolean,
+            default: true,
+        },
         resetPasswordToken: {
             type: String,
         },

@@ -53,24 +53,39 @@ const getItems = async (req, res) => {
         data.rol = SUPERADMIN_ROLE;
         userDocMutated = true;
       }
+      if (data.passwordChanged === false) {
+        data.passwordChanged = true;
+        userDocMutated = true;
+      }
       if (userDocMutated) {
         await data.save();
       }
       const token = jwtService.createTokens(data);
       res.header('X-User-Rol', data.rol);
+
+      const redirect = data.mustCompleteProfile ? 'complete-profile' : null;
+
+      const responsePayload = {
+        data: {
+          correo: data.correo,
+          nombre: data.nombreyapellido,
+          id: data._id,
+          rol: data.rol,
+          image: data.image,
+          mustCompleteProfile: data.mustCompleteProfile,
+          passwordChanged: data.passwordChanged,
+        },
+        token,
+      };
+
+      if (redirect) {
+        responsePayload.redirect = redirect;
+      }
+
       res.status(200).send({
         status: "login",
         message: "Entrando a la base de datos",
-        data: {
-          data: {
-            correo: data.correo,
-            nombre: data.nombreyapellido,
-            id: data._id,
-            rol: data.rol,
-            image: data.image
-          },
-          token
-        }
+        data: responsePayload,
       });
     }
   }
@@ -222,6 +237,9 @@ const postItem = async (req, res) => {
       message: 'El usuario ya tiene una cuenta',
     });
   }
+
+  body.mustCompleteProfile = true;
+  body.passwordChanged = true;
 
   bcrypt.hash(body.password, 10, (error, pwd) => {
     if (error) {
@@ -380,20 +398,80 @@ const updateCorreo = async (req, res) => {
 
 const updateItem = async (req, res) => {
   const { _id } = req.params;
-  const { password, confirmPassword } = req.body;
-  if (password !== confirmPassword) {
-    return res.status(400).json({ error: "Las contraseñas no coinciden" });
+  const { password, confirmPassword, ...rest } = req.body;
+
+  const updates = {};
+  const parseBoolean = (value) => {
+    if (typeof value === 'string') {
+      const normalized = value.toLowerCase();
+      if (normalized === 'true') return true;
+      if (normalized === 'false') return false;
+    }
+    return Boolean(value);
+  };
+
+  if (password || confirmPassword) {
+    if (!password || !confirmPassword) {
+      return res.status(400).json({
+        error: 'Debes enviar la contraseña y su confirmación',
+      });
+    }
+
+    if (password !== confirmPassword) {
+      return res.status(400).json({ error: 'Las contraseñas no coinciden' });
+    }
+
+    updates.password = await bcrypt.hash(password, 10);
+    updates.passwordChanged = true;
+    if (typeof rest.mustCompleteProfile === 'undefined') {
+      updates.mustCompleteProfile = false;
+    }
+  }
+
+  const allowedProfileFields = ['nombreyapellido', 'profesional', 'image'];
+  allowedProfileFields.forEach((field) => {
+    if (typeof rest[field] !== 'undefined') {
+      updates[field] = rest[field];
+    }
+  });
+
+  if (typeof rest.mustCompleteProfile !== 'undefined') {
+    updates.mustCompleteProfile = parseBoolean(rest.mustCompleteProfile);
+  }
+
+  if (
+    typeof rest.passwordChanged !== 'undefined' &&
+    typeof updates.passwordChanged === 'undefined'
+  ) {
+    updates.passwordChanged = parseBoolean(rest.passwordChanged);
+  }
+
+  if (!Object.keys(updates).length) {
+    return res.status(400).send({
+      status: 'error',
+      message: 'No hay datos para actualizar.',
+    });
   }
 
   try {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    await user.findByIdAndUpdate(_id, { password: hashedPassword });
+    const updatedUser = await user
+      .findByIdAndUpdate(_id, { $set: updates }, { new: true })
+      .select('-password');
+
+    if (!updatedUser) {
+      return res.status(404).send({
+        status: 'error',
+        message: 'Usuario no encontrado',
+      });
+    }
+
     return res.status(200).send({
-      status: "success"
+      status: 'success',
+      data: updatedUser,
     });
   } catch (error) {
-    console.error(error);
-    res.status(500).send("Error al actualizar el usuario");
+    console.error('Error al actualizar el usuario:', error);
+    res.status(500).send('Error al actualizar el usuario');
   }
 };
 

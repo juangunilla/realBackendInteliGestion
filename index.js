@@ -20,12 +20,6 @@ require("./instrument.js");
 
 
 // Configuración inicial
-// Middleware para rastrear el flujo de middlewares
-app.use((req, res, next) => {
-  console.log(`[TRACE] Middleware executed for: ${req.method} ${req.originalUrl}`);
-  next();
-});
-
 // Middleware para rastrear solicitudes únicas y evitar duplicaciones
 const requestTracker = new Map();
 
@@ -78,8 +72,8 @@ console.log(health);
 
 
 const fileUpload = require('express-fileupload');
-app.use(fileUpload());
-app.use('/api/bakups', require('./routes/bakups.js'));
+const bakupsRouter = require('./routes/bakups.js');
+app.use('/api/bakups', fileUpload(), bakupsRouter);
 
 
  
@@ -105,6 +99,12 @@ app.use('/api/asp/hidraulica', require('./routes/form/aspHidraulica'));
 app.use('/api/asp/canerias', require('./routes/form/aspCanerias'));
 app.use('/api/ot', require('./routes/form/ot'));
 app.use('/api/capacitaciones', require('./routes/form/capacitaciones'));
+app.use(
+  '/api/capacitacionriesgoespecifico',
+  require('./routes/form/capacitacionRiesgoEspecifico')
+);
+app.use('/api/capacitacionincendio', require('./routes/form/capacitacionIncendio.js'));
+
 app.use('/api/iluminacionyruido', require('./routes/form/iluminacionyruido'));
 app.use('/api/ergonomico', require('./routes/form/ergonomico'));
 app.use('/api/art', require('./routes/form/art'));
