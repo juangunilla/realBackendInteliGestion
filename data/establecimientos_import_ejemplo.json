@@ -1,0 +1,22 @@
+[
+  {
+    "razonSocial": "Ejemplo Uno S.A.",
+    "responsable": "Ana",
+    "inspector": "Ana",
+    "frecuencia": "Bimensual",
+    "mes_inicio": null,
+    "cuit": "30-12345678-9",
+    "direccion": "Calle Falsa 123",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "Ejemplo Dos SRL",
+    "responsable": "Bruno",
+    "inspector": "Bruno",
+    "frecuencia": "Trimestral",
+    "mes_inicio": null,
+    "cuit": "30-98765432-1",
+    "direccion": "Av. Siempreviva 742",
+    "localidad": "Buenos Aires"
+  }
+]

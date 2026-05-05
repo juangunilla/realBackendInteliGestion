@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
-const { studyConfigs } = require('./studyRegistry');
+const {
+  resolveStudyDueDate,
+  resolveStudyEditPath,
+  resolveStudyStatus,
+  studyConfigs,
+} = require('./studyRegistry');
 const Clientes = require('../models/clientes');
 
 async function obtenerEstudiosActivosPorEstablecimiento(establecimientoId) {
@@ -58,15 +63,22 @@ async function obtenerEstudiosActivosPorEstablecimiento(establecimientoId) {
 
   const resultados = await Promise.all(consultas);
 
-  return resultados.reduce((acumulado, { label, key, documentos }) => {
+  return resultados.reduce((acumulado, studyConfig) => {
+    const { label, key, documentos, apiPath } = studyConfig;
+
     const formateados = documentos.map((doc) => {
       const datos = typeof doc.toObject === 'function' ? doc.toObject() : doc;
+      const studyId = datos._id ? `${datos._id}` : null;
+
       return {
         tipo: label,
         key,
+        studyId,
+        apiPath: apiPath || null,
+        editPath: resolveStudyEditPath(studyConfig, studyId),
         coleccion: doc.collection?.name || datos.collection || null,
-        estado: datos.estado || datos.cumplimiento || null,
-        vencimiento: datos.vencimiento || datos.fecha || null,
+        estado: resolveStudyStatus(studyConfig, datos),
+        vencimiento: resolveStudyDueDate(studyConfig, datos),
         detalles: datos,
       };
     });

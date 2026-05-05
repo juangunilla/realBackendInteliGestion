@@ -1,19 +1,42 @@
 const { AspHidraulica, AspHidraulicaHist } = require('../../models/form/aspHidraulica');
 const { crearConHistorial } = require('../../helpers/historialHelper');
+const { normalizeFechaDerivadoPayload } = require('../../helpers/fechaDerivado');
+const { getStudyDateOrderError } = require('../../helpers/studyDateOrder');
+
+const normalizeRef = (value) => (Array.isArray(value) ? value[0] : value);
+
+const normalizePayload = (payload = {}) => {
+  const data = normalizeFechaDerivadoPayload({ ...payload });
+
+  if (Object.prototype.hasOwnProperty.call(data, 'cliente')) {
+    data.cliente = normalizeRef(data.cliente);
+  }
+
+  if (Object.prototype.hasOwnProperty.call(data, 'establecimiento')) {
+    data.establecimiento = normalizeRef(data.establecimiento);
+  }
+
+  return data;
+};
+
+const sendValidationError = (res, message) => {
+  return res.status(400).json({ status: 'error', message });
+};
 
 // Crear nuevo Prueba Hidráulica con historial
 const postItem = async (req, res) => {
   try {
-    const { cliente, establecimiento, ...datos } = req.body;
+    const payload = normalizePayload(req.body);
+    const { cliente, establecimiento, ...datos } = payload;
+    const clienteId = cliente;
+    const establecimientoId = establecimiento;
+    const dateOrderError = getStudyDateOrderError(datos);
 
-    const clienteId = Array.isArray(cliente) ? cliente[0] : cliente;
-    const establecimientoId = Array.isArray(establecimiento) ? establecimiento[0] : establecimiento;
+    if (dateOrderError) {
+      return sendValidationError(res, dateOrderError);
+    }
 
-    const payload = {
-      cliente: clienteId,
-      establecimiento: establecimientoId,
-      ...datos,
-    };
+    const auditPayload = { cliente: clienteId, establecimiento: establecimientoId, ...datos };
 
     const nuevo = await crearConHistorial(
       AspHidraulica,
@@ -25,13 +48,17 @@ const postItem = async (req, res) => {
         user: req.user,
         entity: "aspHidraulica",
         description: "Creación de ASP Hidráulica",
-        payload,
+        payload: auditPayload,
       }
     );
 
     return res.status(201).json({ status: 'success', data: nuevo });
   } catch (error) {
     console.error('Error al crear ASP Hidráulica:', error);
+    if (error?.name === 'ValidationError') {
+      return sendValidationError(res, error.message);
+    }
+
     res.status(500).json({ status: 'error', message: error.message });
   }
 };
@@ -40,13 +67,35 @@ const postItem = async (req, res) => {
 const updateItem = async (req, res) => {
   const { _id } = req.params;
   try {
-    const actualizado = await AspHidraulica.findByIdAndUpdate(_id, req.body, { new: true });
-    if (!actualizado) {
+    const update = normalizePayload(req.body);
+    const actual = await AspHidraulica.findById(_id);
+
+    if (!actual) {
       return res.status(404).json({ status: 'error', message: 'ASP Hidráulica no encontrado' });
     }
+
+    const dateOrderError = getStudyDateOrderError({
+      ...actual.toObject(),
+      ...update,
+    });
+
+    if (dateOrderError) {
+      return sendValidationError(res, dateOrderError);
+    }
+
+    const actualizado = await AspHidraulica.findByIdAndUpdate(
+      _id,
+      update,
+      { new: true, runValidators: true }
+    );
+
     res.json({ status: 'success', data: actualizado });
   } catch (error) {
     console.error(`Error al actualizar ASP Hidráulica ${_id}`, error);
+    if (error?.name === 'ValidationError') {
+      return sendValidationError(res, error.message);
+    }
+
     res.status(500).json({ status: 'error', message: 'Error al actualizar ASP Hidráulica' });
   }
 };

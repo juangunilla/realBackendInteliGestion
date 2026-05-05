@@ -1,5 +1,36 @@
 const mongoose= require('mongoose')
 
+const establecimientoResumenSchema = new mongoose.Schema(
+    {
+        _id: {
+            type: mongoose.Types.ObjectId,
+            ref: 'establecimientos',
+            autopopulate: false,
+        },
+        nombre: {
+            type: String,
+            trim: true,
+        },
+        direccion: {
+            type: String,
+            trim: true,
+        },
+        localidad: {
+            type: String,
+            trim: true,
+        },
+        frecuencia: {
+            type: String,
+            trim: true,
+        },
+        responsable: {
+            type: String,
+            trim: true,
+        },
+    },
+    { _id: false }
+);
+
 const clientesSheme= new mongoose.Schema({
     rozonSocial:{
         type:String,
@@ -15,13 +46,10 @@ const clientesSheme= new mongoose.Schema({
         trim: true,
     },
     cuit:{
-        type:Number
+        type:String,
+        trim: true,
     },
-    establecimientos:[{
-        type:mongoose.Types.ObjectId,
-        ref: 'establecimientos',
-        autopopulate: false,
-    }],
+    establecimientos:[establecimientoResumenSchema],
 },
 {
     timestamps:true,

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const autopopulate = require('mongoose-autopopulate');
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 
 // Esquema base (compartido)
 const baseSchema = {
@@ -64,6 +65,7 @@ const baseSchema = {
 // Esquema principal
 const aguaFisicoQuimicoSchema = new mongoose.Schema(baseSchema);
 aguaFisicoQuimicoSchema.plugin(autopopulate);
+aguaFisicoQuimicoSchema.plugin(studyProfessionalAssignmentPlugin, { studyLabel: 'el estudio de Agua Físico-Químico' });
 
 // Esquema historial (idéntico, pero en otra colección)
 const aguaFisicoQuimicoHistSchema = new mongoose.Schema(baseSchema);

@@ -2,7 +2,22 @@ const { create } = require('express-handlebars');
 const mongoose= require('mongoose');
 const Schema= mongoose.Schema;
 const establecimientosSheme= new mongoose.Schema({
-
+    nombre:{
+        type:String,
+        trim:true
+    },
+    direccion:{
+        type:String,
+        trim:true
+    },
+    frecuencia:{
+        type:String,
+        trim:true
+    },
+    responsable:{
+        type:String,
+        trim:true
+    },
     calle:{
         type:String
     },

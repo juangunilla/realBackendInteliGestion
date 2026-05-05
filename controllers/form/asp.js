@@ -1,10 +1,12 @@
 const { Asp, AspHist } = require('../../models/form/asp');
 const { crearConHistorial } = require('../../helpers/historialHelper');
+const { normalizeFechaDerivadoPayload } = require('../../helpers/fechaDerivado');
 
 // Crear nuevo ASP con historial
 const postItem = async (req, res) => {
   try {
-    const { cliente, establecimiento, ...datos } = req.body;
+    const { cliente, establecimiento, ...rawDatos } = req.body;
+    const datos = normalizeFechaDerivadoPayload(rawDatos);
 
     const clienteId = Array.isArray(cliente) ? cliente[0] : cliente;
     const establecimientoId = Array.isArray(establecimiento) ? establecimiento[0] : establecimiento;
@@ -40,7 +42,8 @@ const postItem = async (req, res) => {
 const updateItem = async (req, res) => {
   const { _id } = req.params;
   try {
-    const actualizado = await Asp.findByIdAndUpdate(_id, req.body, { new: true });
+    const update = normalizeFechaDerivadoPayload(req.body);
+    const actualizado = await Asp.findByIdAndUpdate(_id, update, { new: true });
     if (!actualizado) {
       return res.status(404).json({ status: 'error', message: 'ASP no encontrado' });
     }

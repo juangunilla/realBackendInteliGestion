@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const autopopulate = require('mongoose-autopopulate');
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 
 // Esquema base (reutilizable)
 const baseSchema = {
@@ -21,6 +22,10 @@ const baseSchema = {
     ref: 'profesionales',
     autopopulate: true,
   }],
+  fechaDerivado: {
+    type: Date,
+    default: null,
+  },
 
   // Datos de las vibraciones / estudio
   entidad: {
@@ -52,6 +57,7 @@ const baseSchema = {
 // Esquema principal
 const antisinestralSchema = new mongoose.Schema(baseSchema, { timestamps: true });
 antisinestralSchema.plugin(autopopulate);
+antisinestralSchema.plugin(studyProfessionalAssignmentPlugin, { studyLabel: 'el estudio Antisinestral' });
 
 // Esquema historial
 const antisinestralHistSchema = new mongoose.Schema(baseSchema, { timestamps: true });

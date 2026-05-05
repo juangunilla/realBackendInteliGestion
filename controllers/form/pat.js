@@ -1,9 +1,10 @@
 const res = require('express/lib/response')
 const { default: mongoose, model } = require('mongoose');
 const pat = require('../../models/form/pat')
+const { normalizeFechaDerivadoPayload } = require('../../helpers/fechaDerivado');
 
 const postItem = async (req, res) => {
-    const { body } = req
+    const body = normalizeFechaDerivadoPayload(req.body)
     console.log(body)
     const data = await pat.create(body)
     return res.status(200).send({
@@ -14,9 +15,9 @@ const postItem = async (req, res) => {
 
 const updateItem= async(req,res)=>{
     const {_id}=req.params
-    const update=req.body
+    const update = normalizeFechaDerivadoPayload(req.body)
     try{
-        await aguas.findByIdAndUpdate(_id, {$set:update},{useFindAndModify: true})
+        await pat.findByIdAndUpdate(_id, {$set:update},{useFindAndModify: true})
         res.send(`Actualizaste datos del estudio${_id}`)
     }catch(error){
         console.error(`Error al  actualizar los  datos del estudio${_id}`,error)

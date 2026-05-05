@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const autopopulate = require('mongoose-autopopulate');
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 
 // Esquema base (reutilizable)
 const baseSchema = {
@@ -56,6 +57,7 @@ const baseSchema = {
 // Modelo principal
 const artSchema = new mongoose.Schema(baseSchema, { timestamps: true });
 artSchema.plugin(autopopulate);
+artSchema.plugin(studyProfessionalAssignmentPlugin, { studyLabel: 'el estudio ART' });
 
 // Modelo historial (clonado + fecha de archivo)
 const artHistSchema = new mongoose.Schema(

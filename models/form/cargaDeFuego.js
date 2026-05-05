@@ -25,8 +25,46 @@ const cargaFuegoSheme = new mongoose.Schema({
     vencimiento: {
         type: Date
     },
+    estado: {
+        type: String,
+        default: null
+    },
     comentario: {
         type: String
+    },
+    cheq:{
+        type:String
+    },
+    revalidacionDe: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'cargaDeFuego',
+        default: null
+    },
+    estudioOrigen: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'cargaDeFuego',
+        default: null
+    },
+    esRevalidacion: {
+        type: Boolean,
+        default: false
+    },
+    numeroRevalidacion: {
+        type: Number,
+        default: 0
+    },
+    relevamientoHabilitado: {
+        type: Boolean,
+        default: false
+    },
+    fechaHabilitacionRelevamiento: {
+        type: Date,
+        default: null
+    },
+    habilitadoRelevamientoPor: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user',
+        default: null
     },
 
 }

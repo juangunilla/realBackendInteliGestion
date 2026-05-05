@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const autopopulate = require('mongoose-autopopulate');
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 
 const referenceConfig = (collection) => ({
   type: mongoose.Schema.Types.ObjectId,
@@ -12,6 +13,10 @@ const capacitacionIncendioSchema = new mongoose.Schema(
     cliente: [referenceConfig('clientes')],
     establecimiento: [referenceConfig('establecimientos')],
     profesional: [referenceConfig('profesionales')],
+    fechaDerivado: {
+      type: Date,
+      default: null,
+    },
     profesionalCapacitador: [referenceConfig('profesionales')],
     fechaCapacitacion: {
       type: Date,
@@ -58,6 +63,7 @@ const capacitacionIncendioSchema = new mongoose.Schema(
 );
 
 capacitacionIncendioSchema.plugin(autopopulate);
+capacitacionIncendioSchema.plugin(studyProfessionalAssignmentPlugin, { studyLabel: 'la Capacitación de Incendio' });
 
 const CapacitacionIncendio = mongoose.model(
   'CapacitacionIncendio',

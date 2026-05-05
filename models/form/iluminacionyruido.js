@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 
 const iluminacionyruidoSheme = new mongoose.Schema({
     //datos del cliente
@@ -22,7 +23,8 @@ const iluminacionyruidoSheme = new mongoose.Schema({
         autopopulate: true
     }],
     fechaDerivado: {
-        type: Date
+        type: Date,
+        default: null,
     },
     profesionalCargo: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -66,5 +68,6 @@ const iluminacionyruidoSheme = new mongoose.Schema({
 }
 )
 iluminacionyruidoSheme.plugin(require('mongoose-autopopulate'));
+iluminacionyruidoSheme.plugin(studyProfessionalAssignmentPlugin, { studyLabel: 'el estudio de Iluminación y Ruido' });
 
 module.exports = mongoose.model("iluminacionyruido", iluminacionyruidoSheme)

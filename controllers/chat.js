@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
 const ChatMessage = require('../models/chatMessage');
 const Users = require('../models/user');
-const { studyConfigs, getStudyConfig } = require('../helpers/studyRegistry');
+const {
+  getStudyConfig,
+  resolveStudyDueDate,
+  resolveStudyStatus,
+  studyConfigs,
+} = require('../helpers/studyRegistry');
 const webPush = require('../config/webpush');
 
 let socketUtils;
@@ -81,8 +86,8 @@ const buildStudyReference = async (studyKey, studyObjectId) => {
     resumen: {
       cliente: clienteNombre,
       establecimiento: establecimientoNombre,
-      estado: estudio.estado || estudio.cumplimiento || '',
-      vencimiento: estudio.vencimiento || estudio.fecha || estudio.fechaMed || null,
+      estado: resolveStudyStatus(config, estudio) || '',
+      vencimiento: resolveStudyDueDate(config, estudio),
     },
   };
 };
@@ -281,8 +286,8 @@ const searchStudies = async (req, res) => {
       label: config.label,
       cliente: extractClienteNombre(doc.cliente) || 'Sin razón social',
       establecimiento: extractEstablecimientoNombre(doc.establecimiento) || 'Establecimiento sin nombre',
-      estado: doc.estado || doc.cumplimiento || '',
-      vencimiento: doc.vencimiento || doc.fecha || doc.fechaMed || null,
+      estado: resolveStudyStatus(config, doc) || '',
+      vencimiento: resolveStudyDueDate(config, doc),
     }));
 
     res.send({ status: 'success', data });

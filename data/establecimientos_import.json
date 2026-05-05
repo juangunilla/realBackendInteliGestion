@@ -1,0 +1,2582 @@
+[
+  {
+    "razonSocial": "Abridores Lili S.R.L.",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "33-70805347-9",
+    "direccion": "Pedro Lozano 5760",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "Acevedo Daniel y Rafael Acevedo S.H.",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "33-69008416-9",
+    "direccion": "GARIBALDI 2574",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Acrimol S.A",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-62639602-6",
+    "direccion": "Maestra Rodriguez 2154",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Agrigel S.A. (Sarmiento 61)",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Trimestral",
+    "extra": null,
+    "cuit": "30-64180276-6",
+    "direccion": "Avda Sarmiento 61",
+    "localidad": "Chivilcoy"
+  },
+  {
+    "razonSocial": "Agrigel S.A. /Sarmiento 60)",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Trimestral",
+    "extra": null,
+    "cuit": "30-64180276-6",
+    "direccion": "Avda Sarmiento 60",
+    "localidad": "Chivilcoy"
+  },
+  {
+    "razonSocial": "Agrigel S.A. (Lobos)",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Trimestral",
+    "extra": null,
+    "cuit": "30-64180276-6",
+    "direccion": "9 de Julio 739",
+    "localidad": "Lobos"
+  },
+  {
+    "razonSocial": "Agrigel S.A. (Jose L Suarez)",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-64180276-6",
+    "direccion": "Av Marquez 2400 esq. Bs As",
+    "localidad": "J L Suárez"
+  },
+  {
+    "razonSocial": "Aguas NaturalesS.R.L",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70603576-8",
+    "direccion": "Av. Camargo 2171",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Acrysol Pinturas",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71027759-8",
+    "direccion": "Guardia Vieja 821",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Air Delta SRL",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-65953987-6",
+    "direccion": "Acceso A Av. H. Yrigoyen,  Aeropuerto San Fernando",
+    "localidad": "San Fernando"
+  },
+  {
+    "razonSocial": "Alberdi 2299 S.R.L.",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "33-70934480-9",
+    "direccion": "Avda Juan B Alberdi 2299",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "All Built SA",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "bimensual",
+    "extra": null,
+    "cuit": "33-71252004-9",
+    "direccion": "Pampa 1050",
+    "localidad": "Tigre"
+  },
+  {
+    "razonSocial": "Alpha Recubrimientos  para la Industria",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70932151-6",
+    "direccion": "Mario Bravo   65",
+    "localidad": "Villa Tesei"
+  },
+  {
+    "razonSocial": "Allegretti SA (Grupo Montero)",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-70897204-1",
+    "direccion": "Av 21 Nº 3134 Esq 131 A",
+    "localidad": "Berazategui"
+  },
+  {
+    "razonSocial": "America 210 (Grupo Montero)",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-71554428-4",
+    "direccion": "Av Hipolito Yrigoyen 24763",
+    "localidad": "Guernica"
+  },
+  {
+    "razonSocial": "AMJ S.A.",
+    "responsable": "Daniel",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "30-70737632-1",
+    "direccion": "W. Tata 5164",
+    "localidad": "Caseros"
+  },
+  {
+    "razonSocial": "Amoblamientos Campi SRL",
+    "responsable": "Gaby",
+    "inspector": "Gaby",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-69650686-4",
+    "direccion": "Villaroel 227",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Añasco Autopartes y Servicios",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70916480-1",
+    "direccion": "Av Warnes 1742",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "Arias y Furman S.R.L.",
+    "responsable": "Gaby",
+    "inspector": "Gaby",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71014497-0",
+    "direccion": "Atuel 176",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "ARNUM-AS SA",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "30-62516185-8",
+    "direccion": "del Valle E Iberlucea 1141",
+    "localidad": "Haedo"
+  },
+  {
+    "razonSocial": "Aserradero Romano S.R.L.",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-69638268-5",
+    "direccion": "Av Vergara 3550",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Asociación Civil Facultades Loyola",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-53005014-5",
+    "direccion": "Av Ricardo Balbin 3226",
+    "localidad": "San Miguel"
+  },
+  {
+    "razonSocial": "Asociación de Residentes de San Carlos Country",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-60441614-7",
+    "direccion": "Vitale 700 – Alt Ruta 197- Km 12,5 –",
+    "localidad": "Pablo Nogués"
+  },
+  {
+    "razonSocial": "Australtech S.A. (Gral Rodriguez)",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-66373894-8",
+    "direccion": null,
+    "localidad": "Gral Rodriguez"
+  },
+  {
+    "razonSocial": "Avicola Capilla del Señor (Ex Maitino Claudio y Maitino Gabriel S.H. (Haedo)",
+    "responsable": "Ramon",
+    "inspector": "Ramon",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71002568-8",
+    "direccion": "AV. ROSALES 1952",
+    "localidad": "Haedo"
+  },
+  {
+    "razonSocial": "Avicola Capilla del Señor (Ex Maitino Claudio y Maitino Gabriel S.H.(Exalt de la Cruz)",
+    "responsable": "Ramon",
+    "inspector": "Ramon",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71002568-8",
+    "direccion": "Camino A Cardales Km 1 Cuartel II S/Nº",
+    "localidad": "Exalt de la Cruz"
+  },
+  {
+    "razonSocial": "Babuin y Babuin S.A",
+    "responsable": "Agus",
+    "inspector": "Daniel",
+    "frecuencia": "Mensual",
+    "extra": "Septiembre",
+    "cuit": "30-68972914-9",
+    "direccion": "Arribeños 4400",
+    "localidad": "Paso del Rey"
+  },
+  {
+    "razonSocial": "Barbon Y Barbon S.A.",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-57727482-3",
+    "direccion": "Almancio Alcorta  1775/79",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "Barrio Septiembre S.A.",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70048429-3",
+    "direccion": "Ruta 9 Km 47,5",
+    "localidad": "Escobar"
+  },
+  {
+    "razonSocial": "Bello Guillermo",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "20-11517158-6",
+    "direccion": "Lopardo 138",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Berner SA",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "30-70793421-9",
+    "direccion": "Parque Industrial Tecnológico Aeronáutico de Morón (PITAM), con ingreso en Figueroa Alcorta y Fray Justo Santa María de Oro",
+    "localidad": "Villa Luzuriaga"
+  },
+  {
+    "razonSocial": "Billordo  Susana Beatriz",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "27-18192799-8",
+    "direccion": "Av del Libertador 1847",
+    "localidad": "Moreno"
+  },
+  {
+    "razonSocial": "Biodescartables Marior SRL",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "septiembre",
+    "cuit": "30-71114373-0",
+    "direccion": "Gervasio Pavon 4251",
+    "localidad": "Castelar"
+  },
+  {
+    "razonSocial": "Boh Luis Martin",
+    "responsable": "Daniel",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "20-25298670-8",
+    "direccion": "Mario Bravo 191",
+    "localidad": "Villa Tesei"
+  },
+  {
+    "razonSocial": "Bolonese Roberto",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Trimestral",
+    "extra": null,
+    "cuit": "23-12152119-9",
+    "direccion": "Sarmiento 93",
+    "localidad": "Chivilcoy"
+  },
+  {
+    "razonSocial": "Boscardin SRL",
+    "responsable": "Agus",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": "septiembre",
+    "cuit": "30-71694649-1",
+    "direccion": "Parque Ind Buen Ayre",
+    "localidad": "Moreno"
+  },
+  {
+    "razonSocial": "Brienza Daniel Antonio (supermercado)",
+    "responsable": "Ramon",
+    "inspector": "Ramon",
+    "frecuencia": "Bimensual",
+    "extra": "septiembre",
+    "cuit": null,
+    "direccion": "Ricardo Balbin (ruta 200) E/Tagle y Varela",
+    "localidad": "Mariano Acosta"
+  },
+  {
+    "razonSocial": "Equipamientos Bragado SA",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "30-71063161-8",
+    "direccion": "Ing Guillermo White 2178",
+    "localidad": "El Palomar"
+  },
+  {
+    "razonSocial": "Bruno Carlos y Bruno Ariel S.H.",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": "septiembre",
+    "cuit": "30-70848832-8",
+    "direccion": "Aviador Subtte. A. Fernandez 1770",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "ByV Instalaciones Industriales SA",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "33-71516788-9",
+    "direccion": "Av 9 de Julio 4276",
+    "localidad": "San Martin"
+  },
+  {
+    "razonSocial": "Calico  S.A. (Poeta Risso)",
+    "responsable": "Laura",
+    "inspector": "Laura",
+    "frecuencia": "Mensual",
+    "extra": "septiembre",
+    "cuit": "33-59668367-9",
+    "direccion": "POETA RISSO 2745",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Calico Pilar (Jonshon)",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "33-59668367-9",
+    "direccion": "Pque ind Pilar",
+    "localidad": "Pilar"
+  },
+  {
+    "razonSocial": "Calico S.A.  (Pernod Ricard)",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "33-59668367-9",
+    "direccion": "Jujuy 1197",
+    "localidad": "Bella Vista"
+  },
+  {
+    "razonSocial": "Calico S.A. (Buen Ayre)",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "33-59668367-9",
+    "direccion": "Juana Manuela Gorriti 3811",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Calico S.A. (Los Patos)",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "33-59668367-9",
+    "direccion": "Los Patos 752",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Caracas Combustibles S.R.L.",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "30-71001101-6",
+    "direccion": "AV. GAONA 2886",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "Carbe  Ingeniería SRL",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-61342633-3",
+    "direccion": "Acceso Oeste 2842 Nº 753",
+    "localidad": "Moreno"
+  },
+  {
+    "razonSocial": "Casa OSle S.A.C.I.F.I.Y.A. (Grand Bourg)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-52162224-1",
+    "direccion": "juan F Segui 1543",
+    "localidad": "Grand Bourg"
+  },
+  {
+    "razonSocial": "Casa OSle S.A.C.I.F.I.Y.A. (San Miguel",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-52162224-1",
+    "direccion": "Alem 1470",
+    "localidad": "San Miguel"
+  },
+  {
+    "razonSocial": "Casa OSle S.A.C.I.F.I.Y.A. (Jose C Paz)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-52162224-1",
+    "direccion": "Hipolito Irigoyen 2176",
+    "localidad": "José C Paz"
+  },
+  {
+    "razonSocial": "Casa OSle S.A.C.I.F.I.Y.A. (Los Polvorines)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-52162224-1",
+    "direccion": "25 de Mayo 2765",
+    "localidad": "Los Polvorines"
+  },
+  {
+    "razonSocial": "Casa OSle S.A.C.I.F.I.Y.A. (Logistica)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-52162224-1",
+    "direccion": "Av Lemos 1639",
+    "localidad": "Villa de Mayo"
+  },
+  {
+    "razonSocial": "Casa OSle S.A.C.I.F.I.Y.A. (Pilar)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-52162224-1",
+    "direccion": "P la Grave esq. Belgrano S/Nº",
+    "localidad": "Pilar"
+  },
+  {
+    "razonSocial": "Casa OSle S.A.C.I.F.I.Y.A. (Escobar)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-52162224-1",
+    "direccion": "25 de Mayo  841",
+    "localidad": "Escobar"
+  },
+  {
+    "razonSocial": "Casa OSle S.A.C.I.F.I.Y.A. (Don Torcuato)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-52162224-1",
+    "direccion": "Riobamba 1531",
+    "localidad": "Don Torcuato"
+  },
+  {
+    "razonSocial": "Casa OSle S.A.C.I.F.I.Y.A. (Derqui)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-52162224-1",
+    "direccion": "Avda. de Mayo  199",
+    "localidad": "Pte Derqui"
+  },
+  {
+    "razonSocial": "Casa OSle S.A.C.I.F.I.Y.A. (Moreno)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-52162224-1",
+    "direccion": "Av del Libertador 7577",
+    "localidad": "Moreno"
+  },
+  {
+    "razonSocial": "Casa OSle S.A.C.I.F.I.Y.A. (Garin)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-52162224-1",
+    "direccion": "Jose Hernandez 966",
+    "localidad": "Garin"
+  },
+  {
+    "razonSocial": "Casa Osle S.A.C.I.F.I.Y.A. (Adm)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-52162224-1",
+    "direccion": "Av Lemos 1639",
+    "localidad": "Villa de Mayo"
+  },
+  {
+    "razonSocial": "Casa Osle S.A.C.I.F.I.Y.A. (Tigre)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-52162224-1",
+    "direccion": null,
+    "localidad": "Tigre"
+  },
+  {
+    "razonSocial": "Caso y Vázquez SRL",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "30-70840043-9",
+    "direccion": "Vicente López 555/557",
+    "localidad": "Morón"
+  },
+  {
+    "razonSocial": "Cedini S.R.L.",
+    "responsable": "Gaby",
+    "inspector": "Gaby",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71088434-6",
+    "direccion": "Diego de Caravajal 72",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Celulosa Caning SA",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "bimensual",
+    "extra": null,
+    "cuit": "30-71622922-6",
+    "direccion": "Caning II",
+    "localidad": "Ezeiza"
+  },
+  {
+    "razonSocial": "Cerbino Horacio H Sucesión  F Cerbinoy Sucesión Luis R Cerbino",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-51899914-8",
+    "direccion": "ESTEBAN MERLO 5146",
+    "localidad": "Caseros"
+  },
+  {
+    "razonSocial": "Chilabert 1990 S.R.L",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "septiembre",
+    "cuit": "30-59476092-8",
+    "direccion": "Chilavert 1990",
+    "localidad": "Villa Madero"
+  },
+  {
+    "razonSocial": "Cirigliano Graciela Esmeralda - (Grafica Salinas)",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "27-06653168-1",
+    "direccion": "Marquez de Aviles 1455",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Coldtruck",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71177330-0",
+    "direccion": "Amanda Allen 298",
+    "localidad": "Villa Tesei"
+  },
+  {
+    "razonSocial": "Compañía Química Suttley Argentina S.R.L",
+    "responsable": "Gaby",
+    "inspector": "Gaby",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-64318697-3",
+    "direccion": "Av. Camargo 2090",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Componentes para Bicicletas SA",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "bimensual",
+    "extra": null,
+    "cuit": "3071016448-3",
+    "direccion": "Montes de Oca  6620",
+    "localidad": "Vte López"
+  },
+  {
+    "razonSocial": "Conyca",
+    "responsable": "Gaby",
+    "inspector": "Gaby",
+    "frecuencia": "bimensual",
+    "extra": null,
+    "cuit": "30-71162218-3",
+    "direccion": "Atuel 202",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Consmet S.A.",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-69795750-9",
+    "direccion": "Zarate 6154",
+    "localidad": "San Martin"
+  },
+  {
+    "razonSocial": "Constructora  Ferco S.A.  + obra",
+    "responsable": "Gaby",
+    "inspector": "Gaby",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-58580246-4",
+    "direccion": "Av. Camargo 2002",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Cosmética Primont SRL (806)",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-66115371-3",
+    "direccion": "Centenera 806",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Cosmética Primont SRL (805)",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-66115371-3",
+    "direccion": "Centenera 805",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "CT Plast SRL",
+    "responsable": "Daniel",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": "Septiembre",
+    "cuit": "30-70857130-6",
+    "direccion": "O´Brien 530",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Cuchillas  Industriales Ancar S.R.L",
+    "responsable": "Gaby",
+    "inspector": "Gaby",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70963250-3",
+    "direccion": "Centenera  792",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Cutzarida SRL",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71055765-5",
+    "direccion": "Bernardo de Irigoyen 1745",
+    "localidad": "Boulogne"
+  },
+  {
+    "razonSocial": "Cuyano Seguridad SA",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70907752-6",
+    "direccion": "25 de Mayo 2768",
+    "localidad": "Los Polvorines"
+  },
+  {
+    "razonSocial": "Dagward SA",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-68010452-9",
+    "direccion": "Hipolito Irigoyen 3248",
+    "localidad": "El Talar"
+  },
+  {
+    "razonSocial": "Daniel Hugo Iele",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "20-08505006-1",
+    "direccion": "Gral Alfredo Rodriguez 1362",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Desynth  S.A",
+    "responsable": "Gaby",
+    "inspector": "Gaby",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-64050443-5",
+    "direccion": "Atuel 245",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Diego Carlos  Iacovino",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-71639208-9",
+    "direccion": "Gaspar Campos 961",
+    "localidad": "Bella Vista"
+  },
+  {
+    "razonSocial": "Di Maio Jose Alejandro",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "20-14125666-2",
+    "direccion": "Cristiania 1533",
+    "localidad": "Rafael Castillo"
+  },
+  {
+    "razonSocial": "Dimatico S.R.L.",
+    "responsable": "Gaby",
+    "inspector": "Gaby",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-64669962-9",
+    "direccion": "Gluck 2725/27",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Distribuidora Carlitos",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70835169-1",
+    "direccion": "Misiones 6466",
+    "localidad": "El Palomar"
+  },
+  {
+    "razonSocial": "Garaje Don Antonio SRL",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-69416747-7",
+    "direccion": "Yerbal 3105",
+    "localidad": "Lanus"
+  },
+  {
+    "razonSocial": "Dulzuplast  S.A.",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "33-71096319-9",
+    "direccion": "Siria  104",
+    "localidad": "Villa Tesei"
+  },
+  {
+    "razonSocial": "Ecoterra Recicla S.A",
+    "responsable": "Agus",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": "Septiembre",
+    "cuit": "30-69968750-9",
+    "direccion": "Av. Julio A Roca 3034",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Ecoterra (Ceamse)",
+    "responsable": "Agus",
+    "inspector": "Daniel",
+    "frecuencia": "Mensual",
+    "extra": "Septiembre",
+    "cuit": null,
+    "direccion": null,
+    "localidad": null
+  },
+  {
+    "razonSocial": "El Chillen",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Quincenal",
+    "extra": null,
+    "cuit": "33-715863680-9",
+    "direccion": "Jauretche 1395 Esq Borges",
+    "localidad": "Cañuelas"
+  },
+  {
+    "razonSocial": "El Hogar de los Abuelos S.A.",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "septiembre",
+    "cuit": "30-70872568-0",
+    "direccion": "Juan Chassaing 546/48",
+    "localidad": "Haedo"
+  },
+  {
+    "razonSocial": "NORMAKO S.A (tortuguitas)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-71387620-4",
+    "direccion": "MISIONES 56",
+    "localidad": "Tortuguitas"
+  },
+  {
+    "razonSocial": "NORMAKO S.A (JC Paz)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-71387620-5",
+    "direccion": null,
+    "localidad": "Jose C Paz"
+  },
+  {
+    "razonSocial": "El Mueble S.R.L",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "30-70710518-2",
+    "direccion": "Corregidores 1041",
+    "localidad": "Haedo"
+  },
+  {
+    "razonSocial": "Embal Group S.A.",
+    "responsable": "Daniel",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": "septiembre",
+    "cuit": "30-71119233-2",
+    "direccion": "Arturo Illia 371",
+    "localidad": "San Miguel"
+  },
+  {
+    "razonSocial": "Epocoat",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70932940-1",
+    "direccion": "Miranda 548",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Essential SA",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-65376481-9",
+    "direccion": "Cale 7 Nº 64",
+    "localidad": "Pilar"
+  },
+  {
+    "razonSocial": "Establecimiento Grafico Franco (Alvarez)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-50038965-2",
+    "direccion": "Agustin Alvarez 2242",
+    "localidad": "San Martin"
+  },
+  {
+    "razonSocial": "Establecimiento Grafico Franco (Catamarca)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-50038965-2",
+    "direccion": "Catamarca",
+    "localidad": "San Martin"
+  },
+  {
+    "razonSocial": "Estanterias Rodel S.A.",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "30-71073911-7",
+    "direccion": "Alvarez de Arenales 1045",
+    "localidad": "Morón"
+  },
+  {
+    "razonSocial": "Fadapyl SRL",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-5030330757-6",
+    "direccion": "Santo Domingo 4211 - Nueva Pompoeya",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "Faravelli SA",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-50999054-1",
+    "direccion": "Dr. R Monte (Ex Alvarado) 1350",
+    "localidad": "Morón"
+  },
+  {
+    "razonSocial": "Fecopa S.A. (Grupo Montero)",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-70851698-4",
+    "direccion": "Camino Gral Belgrano 3305",
+    "localidad": "Berazategui"
+  },
+  {
+    "razonSocial": "Flavia Veronica Gerez y Nesor E Castellanos S.H.",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "30-70717478-8",
+    "direccion": "Av Juan  Justo 9643",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "Fletes S.A",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Quincenal",
+    "extra": null,
+    "cuit": "30-70849908-7",
+    "direccion": "Av Lemos  1639",
+    "localidad": "Villa de Mayo"
+  },
+  {
+    "razonSocial": "Frabar",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-59491440-2",
+    "direccion": "Av. Hipolito Yrigoyen 3615",
+    "localidad": "José C Paz"
+  },
+  {
+    "razonSocial": "G.N.C Del Bosque S.A. (12 de Octubre y Mosconi)",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70737935-5",
+    "direccion": "Av. 12 de Octubre 3401 Esq. Mosconi",
+    "localidad": "Quilmes"
+  },
+  {
+    "razonSocial": "Gamyt S.R.L.",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70940286-9",
+    "direccion": "Los Patos  2022",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Garbossa Hnos S.A.",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-50226443-1",
+    "direccion": "Pje Amsterdan  3764",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "Gentile Montajes S.R.L.",
+    "responsable": "Gaby",
+    "inspector": "Gaby",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-7095857-7",
+    "direccion": "Diego Rosales 640",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "GNC El Talar S.A.",
+    "responsable": "Ramon",
+    "inspector": "Ramon",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70947478-9",
+    "direccion": "HIPOLITO YRIGOYEN 1631",
+    "localidad": "El Talar"
+  },
+  {
+    "razonSocial": "Goimco SA",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": null,
+    "direccion": "Av Gral Lemos 1639",
+    "localidad": "Villa de Mayo"
+  },
+  {
+    "razonSocial": "Gomcom S.A.",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "33-70817210-9",
+    "direccion": "Fernandez de la Cruz 3205",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "Griferia BL",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71202016-0",
+    "direccion": "Maestra Rodriguez  2185",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Grudi SRL",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71343300-0",
+    "direccion": "Jufre 1082/82",
+    "localidad": "Villa tesei"
+  },
+  {
+    "razonSocial": "Grupo Coes S.A. (Pampa)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71543775-5",
+    "direccion": "Pampa 1076",
+    "localidad": "Tigre"
+  },
+  {
+    "razonSocial": "Grupo Coes S.A. (Chubut 1718)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71543775-5",
+    "direccion": "Chubut 1718",
+    "localidad": "Tigre"
+  },
+  {
+    "razonSocial": "Grupo Coes S.A. (Chubut 1988)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71543775-5",
+    "direccion": "Chubut 1988",
+    "localidad": "Tigre"
+  },
+  {
+    "razonSocial": "Grupo Inar SRL",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71112247-4",
+    "direccion": "Fray Mocho 1939",
+    "localidad": "La Reja"
+  },
+  {
+    "razonSocial": "Hai Combustibles S.R.L.",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "bimensual",
+    "extra": null,
+    "cuit": "30-71720275-5",
+    "direccion": "Av. del Libertador Gral. San Martín 417",
+    "localidad": "San Martin"
+  },
+  {
+    "razonSocial": "Horba",
+    "responsable": "Agus",
+    "inspector": "Daniel",
+    "frecuencia": "Mensual",
+    "extra": "Septiembre",
+    "cuit": "30-68972914-9",
+    "direccion": "Arribeños 4400",
+    "localidad": "Paso del Rey"
+  },
+  {
+    "razonSocial": "Hurlin Met SRL",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-65086061-2",
+    "direccion": "Tambo Nuevo 1721",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Hurlingham  Motors S.A",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "bimensual",
+    "extra": null,
+    "cuit": "33-60913865-9",
+    "direccion": "Av Vergara 1901",
+    "localidad": "Villa Tesei"
+  },
+  {
+    "razonSocial": "Iacopi Guillermo Alberto",
+    "responsable": "Gaby",
+    "inspector": "Gaby",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "20-08104981-6",
+    "direccion": "Atuel  254",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Indepol ( ExDeandreis Guillermo Juan S.H. )",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71428387-8",
+    "direccion": "Sta Isabel 4664",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Induslab",
+    "responsable": "Gaby",
+    "inspector": "Gaby",
+    "frecuencia": "bimensual",
+    "extra": null,
+    "cuit": null,
+    "direccion": "Pastre 1893",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Instal Shop SRL",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": null,
+    "direccion": "Conscripto Bernardi 757",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Instituto Bioquimico Hurlingham",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71157991-1",
+    "direccion": "Génova 1937 esq. Vergara",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Instituto Urologico Buenos Aires",
+    "responsable": "xxxxxx",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": null,
+    "direccion": null,
+    "localidad": "CABA"
+  },
+  {
+    "razonSocial": "Instrumets Avionics Service S.R.L.",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70963738-6",
+    "direccion": "Hipólito Yrigoyen 3673, San Fernando (1646) - Bs. As",
+    "localidad": "San Fernando"
+  },
+  {
+    "razonSocial": "Jewel Pinturas",
+    "responsable": "Gaby",
+    "inspector": "Gaby",
+    "frecuencia": "bimensual",
+    "extra": null,
+    "cuit": "30-70876437-6",
+    "direccion": "Diego Rosales 631",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Centro Re Crear (ExJonte Monica Alicia)",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "bimensual",
+    "extra": "octubre",
+    "cuit": "27-11111384-5",
+    "direccion": "Entre Rios 550",
+    "localidad": "Morón"
+  },
+  {
+    "razonSocial": "Juncarmet de Lateana C Juan y Lateana Giovanni",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-67889859-3",
+    "direccion": "Aviador Subtte. A. Fernandez 2167",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Kollontai S.A.",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "mensual",
+    "extra": null,
+    "cuit": "33-71690487-9",
+    "direccion": "AV. DE LOS CONSTITUYENTES 3321",
+    "localidad": "Gral Pacheco - Tigre"
+  },
+  {
+    "razonSocial": "L3 SA",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71685702-2",
+    "direccion": "Perito Moreno 845 Parque industrial etapa 2 galpón 73-",
+    "localidad": "Ezeiza"
+  },
+  {
+    "razonSocial": "La atomica de Méndez Hnos SRL",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "30-51633879-9",
+    "direccion": "Pasteur 3631",
+    "localidad": "San Justo"
+  },
+  {
+    "razonSocial": "Laboratorio CKC Argentina S.A. - Depósito",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "30-70814556-0",
+    "direccion": "Av Amancio Alcorta 2655",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "Laboratorio CKC Argentina S.A. - Fabrica",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70814556-0",
+    "direccion": "Inta",
+    "localidad": "Castelar"
+  },
+  {
+    "razonSocial": "Laboratorio de Estética Francesa",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-68177128-6",
+    "direccion": "Avalos 180",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "Laboratorio Delente S.R.L.",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-57252355-8",
+    "direccion": "MORENO 5157-9",
+    "localidad": "Caseros"
+  },
+  {
+    "razonSocial": "Laboratorio Warmic S.A.I.Y.C",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-50438024-2",
+    "direccion": "Mariano Escalada 1177",
+    "localidad": "El Palomar"
+  },
+  {
+    "razonSocial": "La Estrella Norte (Frabar)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71578631-8",
+    "direccion": "Av Hipolito Yrigoyen 4391",
+    "localidad": "José C Paz"
+  },
+  {
+    "razonSocial": "Lanieri Juan Carlos",
+    "responsable": "Gaby",
+    "inspector": "Gaby",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "20-11034266-8",
+    "direccion": "Pastre 1639",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Lecitec SRL",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "33-71125253-9",
+    "direccion": "Fernandez de Olivera 3723 (Nueva direccion)",
+    "localidad": "Caseros"
+  },
+  {
+    "razonSocial": "Le Meridien  S.A. (Caba)",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "30-69649910-8",
+    "direccion": "Oliveira 3723 (Caseros)",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "Le Meridien  S.A. (San Martin)",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-69649910-8",
+    "direccion": "Balbin 2669",
+    "localidad": "San Martin"
+  },
+  {
+    "razonSocial": "Lenterdit SA (Matheu 2242)",
+    "responsable": "Agus",
+    "inspector": "Barbara/Favio",
+    "frecuencia": "Semanal",
+    "extra": "Septiembre",
+    "cuit": "33-57332947-9",
+    "direccion": "Matheu 2242",
+    "localidad": "San Justo"
+  },
+  {
+    "razonSocial": "Lenterdit SA (Pque Ind)",
+    "responsable": "Agus",
+    "inspector": "Barbara/Favio",
+    "frecuencia": "Quincenal",
+    "extra": "Septiembre",
+    "cuit": "33-57332947-9",
+    "direccion": "Pque indusrial La Matanza",
+    "localidad": "La Matanza"
+  },
+  {
+    "razonSocial": "Lenterdit SA (Matheu 3060 Coca Cola)",
+    "responsable": "Agus",
+    "inspector": "Barbara/Favio",
+    "frecuencia": "Quincenal",
+    "extra": "Septiembre",
+    "cuit": "33-57332947-10",
+    "direccion": "Matheu 3060 (Coca Cola)",
+    "localidad": "San Justo"
+  },
+  {
+    "razonSocial": "Leopardi Hernán y Leopardi Silvia SH",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70745207-9",
+    "direccion": "San Carlos 2645",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Luca Cocinas SRL",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "septiembre",
+    "cuit": "33-70299728-9",
+    "direccion": "Rio Negro 970",
+    "localidad": "El Palomar"
+  },
+  {
+    "razonSocial": "Luces  Argentinas S.A.",
+    "responsable": "Ramon",
+    "inspector": "Ramon",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70721231-0",
+    "direccion": "FRANCIA 1180",
+    "localidad": "El Talar"
+  },
+  {
+    "razonSocial": "Lusqtoff",
+    "responsable": "Agus",
+    "inspector": "Favio",
+    "frecuencia": "bimensual",
+    "extra": null,
+    "cuit": "30-69319077-7",
+    "direccion": "2 de Abril 1911",
+    "localidad": "Paso del Rey"
+  },
+  {
+    "razonSocial": "Maderera Morón S.A.",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "30-59689492-1",
+    "direccion": "Colón 749",
+    "localidad": "Morón"
+  },
+  {
+    "razonSocial": "Mallol Hnos. S.A.",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-51646824-2",
+    "direccion": "Tucuman 1175 E/ Intendente Grant y Cañada de Juan Cruz",
+    "localidad": "Moron Norte"
+  },
+  {
+    "razonSocial": "Man S.A.",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70787775-4",
+    "direccion": "Bartolome Hidalgo 2038",
+    "localidad": "Castelar"
+  },
+  {
+    "razonSocial": "Mancusso Plasticos SRL",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "septiembre",
+    "cuit": "30-71104322-1",
+    "direccion": "Guamini 2955",
+    "localidad": null
+  },
+  {
+    "razonSocial": "Manufacturera de calzado San José SRL",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71401174-6",
+    "direccion": "Roma 85",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Maquinarias Caseros S.A.",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-52132924-2",
+    "direccion": "Ave Cnel F Uzal 3431",
+    "localidad": "Olivos"
+  },
+  {
+    "razonSocial": "Marcos y Hugo Libedinsky SA",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Quincenal",
+    "extra": "septiembre - octubre",
+    "cuit": "30-61932955-0",
+    "direccion": "Agüero 1395",
+    "localidad": "Morón"
+  },
+  {
+    "razonSocial": "Mar-Mo S.R.L",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-65638341-6",
+    "direccion": "Av Gral Hornos 2084",
+    "localidad": "Caseros"
+  },
+  {
+    "razonSocial": "Marta Silvia Colonna",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "mensual",
+    "extra": null,
+    "cuit": "30-74639218-6",
+    "direccion": "Rosario  4748",
+    "localidad": "Sourdeaux"
+  },
+  {
+    "razonSocial": "Masaryk Jose Luis",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "23-10084276-9",
+    "direccion": "Av Julio A Roca 646",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Mediglove",
+    "responsable": "silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70794870-8",
+    "direccion": "Pedro de Mendoza 1883",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Mega Julio César",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "20-21923746-5",
+    "direccion": "Pedro Díaz  2535",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "MN Resortes S.A.",
+    "responsable": "Gaby",
+    "inspector": "Gaby",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-69703526-1",
+    "direccion": "Malaspina 433",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Merlo Televisora Color SA",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "30-66603522-0",
+    "direccion": "Pitagoras 1138",
+    "localidad": "Merlo"
+  },
+  {
+    "razonSocial": "Metal Bronx SRL",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71529736-9",
+    "direccion": "Gluck 3859",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Metalurgica Athuel S.R.L.",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70811680-3",
+    "direccion": "Lopardo 188",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Metalurgica Borra S.R.L.",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71010585-1",
+    "direccion": "Gorriti 3755",
+    "localidad": "J L Suárez"
+  },
+  {
+    "razonSocial": "Metalurgica Lagilla SRL",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "30-70891660-5",
+    "direccion": "Mirave  1627",
+    "localidad": "Ituzaingó"
+  },
+  {
+    "razonSocial": "Metalurgica Tesei SA",
+    "responsable": "Gaby",
+    "inspector": "Gaby",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70875878-3",
+    "direccion": "Roma  220",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Michelli S.A",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "septiembre",
+    "cuit": "30-65638347-6",
+    "direccion": "Av. La Plata 1759",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "Miguel Angel De Marzio SA (Mtra Rodriguez)",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-62982638-2",
+    "direccion": "Maestra Rodriguez 2122",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Miguel Angel De Marzio SA (Camargo 2172)",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-62982638-2",
+    "direccion": "Av. Camargo 2172",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Miguel Angel De Marzio SA (Camargo 1990)",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-62982638-2",
+    "direccion": "Av. Camargo 1990/1196",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Monofilamentos Internacional S.A.",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-60998387-2",
+    "direccion": "Remedios de Escalada 485",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Montero&Montero SA",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71623888-8",
+    "direccion": "Hilario Ascasubi 950",
+    "localidad": "Monte grande"
+  },
+  {
+    "razonSocial": "Morixe Hermanos S.A.C.I.",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-52534638-9",
+    "direccion": "Panamericana Km. 49.5 –  Calle 22.N°164.",
+    "localidad": "Pque industrial Pilar."
+  },
+  {
+    "razonSocial": "Muntal S.A.",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-659912755",
+    "direccion": "ESPINOSA 2436",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "Novatech S.A.",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-65402434-7",
+    "direccion": "M.T.DE ALVEAR  4655",
+    "localidad": "Caseros"
+  },
+  {
+    "razonSocial": "Nuevo IdealS.A. (A M Justo)",
+    "responsable": "Agus",
+    "inspector": "Barbara/Favio",
+    "frecuencia": "Bimensual",
+    "extra": "Octubre",
+    "cuit": "30-68013871-7",
+    "direccion": "Alcorta  3455",
+    "localidad": "San Justo"
+  },
+  {
+    "razonSocial": "Nuevo IdealS.A. (V del Pino)",
+    "responsable": "Agus",
+    "inspector": "Barbara/Favio",
+    "frecuencia": "Bimensual",
+    "extra": "Agosto",
+    "cuit": "30-68013871-7",
+    "direccion": "Ruta 3 Km 42 S/Nº",
+    "localidad": "V del Pino"
+  },
+  {
+    "razonSocial": "Nuevo IdealS.A. (Gral Paz)",
+    "responsable": "Agus",
+    "inspector": "Barbara/Favio",
+    "frecuencia": "Bimensual",
+    "extra": "Octubre",
+    "cuit": "30-68013871-7",
+    "direccion": "Gral Paz",
+    "localidad": "Loma del Mirador"
+  },
+  {
+    "razonSocial": "Nusdeo Domenico",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "20-92383233-6",
+    "direccion": "Mario Bravo 16",
+    "localidad": "Villa Tesei"
+  },
+  {
+    "razonSocial": "Orieta Debora Rocio (All RacK)",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "27-38707635-8",
+    "direccion": "Gral Rodriguez 1362",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Oscar Entin Filtración Industrial S.A  (Castro)",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "septiembre",
+    "cuit": "30-65495203-1",
+    "direccion": "Castro 1757",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "Oscar Entin Filtración Industrial S.A (Las Casas)",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "septiembre",
+    "cuit": "30-65495203-1",
+    "direccion": "Las Casas 3728",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "Padua Hnos SH de Pedro y Miguel Padua",
+    "responsable": "Agus",
+    "inspector": "Barbara/Favio",
+    "frecuencia": "Bimensual",
+    "extra": "Septiembre",
+    "cuit": null,
+    "direccion": "J.B. de la Salle 3547. Gonzalez Catan",
+    "localidad": "Gonzalez Catan"
+  },
+  {
+    "razonSocial": "Paletta  Oscar Alberto",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "20-14565819-6",
+    "direccion": "ROSAS CASTILLO  2080",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Parallel S.A. (Gral Pacheco)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-57321525-5",
+    "direccion": "Av Constituyentes 3999",
+    "localidad": "Gral Pacheco"
+  },
+  {
+    "razonSocial": "Parallel S.A. (Martinez)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-57321525-5",
+    "direccion": "Vieytes 1039 2º A",
+    "localidad": "Martinez"
+  },
+  {
+    "razonSocial": "Pilello Cucinotta  Guillermo",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "20-25561339-1",
+    "direccion": "Uspallata 653",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Petrolito SA (Grupo Montero)",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Mensual",
+    "extra": null,
+    "cuit": "30-70885039-6",
+    "direccion": "Av 21 Nº 1411 esq 114",
+    "localidad": "Berazategui"
+  },
+  {
+    "razonSocial": "Pinturas Megalux",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "bimensual",
+    "extra": null,
+    "cuit": "30-69648801-7",
+    "direccion": "Roetger 265",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Plow SRL",
+    "responsable": "Gaby",
+    "inspector": "Gaby",
+    "frecuencia": "bimensual",
+    "extra": null,
+    "cuit": "30-70808452-9",
+    "direccion": "concepcion Arenal 2481",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Plus  Service S.R.L.",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "33-64448451-9",
+    "direccion": "Chacabuco 4301",
+    "localidad": "Villa Ballester"
+  },
+  {
+    "razonSocial": "Ponce Carlos Antonio",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "septiembre",
+    "cuit": "20-07861089-2",
+    "direccion": "Entre Ríos 639",
+    "localidad": "Morón"
+  },
+  {
+    "razonSocial": "Posta SRL",
+    "responsable": "Agus",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": "Septiembre",
+    "cuit": null,
+    "direccion": "Leonismo Argentino 3077",
+    "localidad": "Caseros"
+  },
+  {
+    "razonSocial": "Procesos Producros y Servicios  S.A.",
+    "responsable": "Gaby",
+    "inspector": "Gaby",
+    "frecuencia": "Quincenal",
+    "extra": null,
+    "cuit": "30-65825105-4",
+    "direccion": "Av. Camargo 2347",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Prodular SRL",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71239537-7",
+    "direccion": "Fray Mocho1901",
+    "localidad": "La Reja"
+  },
+  {
+    "razonSocial": "Provin Pack S.A.",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71526828-7",
+    "direccion": "Perito Moreno 375 -Pque Ind Canning",
+    "localidad": "Ezeiza"
+  },
+  {
+    "razonSocial": "Pulp Trays",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "33-71243268-9",
+    "direccion": "Perito Moreno 375 -Pque Ind Canning",
+    "localidad": "Ezeiza"
+  },
+  {
+    "razonSocial": "Pultec S.A.",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "bimensual",
+    "extra": null,
+    "cuit": "30-71454123-0",
+    "direccion": "Maestra Rodriguez 2129",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Rampei SRL",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71544893-5",
+    "direccion": "Av Triunvirato 4351 PB Local 21",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "Rao Extrusora S.A.",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-61373561-1",
+    "direccion": "Necochea 586",
+    "localidad": "hurlingham"
+  },
+  {
+    "razonSocial": "Reciclados Romano S.R.L.",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71077278-5",
+    "direccion": "Av. Camargo 2126",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Reciclados Well Plast SA",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71486610-5",
+    "direccion": "Urcola Nº 40",
+    "localidad": "Carupa - San Fernando"
+  },
+  {
+    "razonSocial": "Rectificación Morón S. A.",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-50286425-0",
+    "direccion": "Avenida Zeballos 1968",
+    "localidad": "Castelar"
+  },
+  {
+    "razonSocial": "Residencial Ezeiza",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": null,
+    "direccion": "Balboa 174 entre 9 de julio y Senavilla",
+    "localidad": "Ezeiza"
+  },
+  {
+    "razonSocial": "Recupal Argentina SA",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "3070735161-2",
+    "direccion": null,
+    "localidad": "Rodriguez"
+  },
+  {
+    "razonSocial": "Resipol S.A.",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-67705876-1",
+    "direccion": "Av. Julio A Roca 2928",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Romalus S.R.L",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-55766232-0",
+    "direccion": "J. de Garay 5530",
+    "localidad": "Caseros"
+  },
+  {
+    "razonSocial": "Rotger Javier Eduardo",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "20-26756521-0",
+    "direccion": "Felipe Pastre 1875",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Rotomoldeo SRL",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "33-70797394-9",
+    "direccion": "Salvador María del Carril 74",
+    "localidad": "Morón"
+  },
+  {
+    "razonSocial": "RQB Argentina SA (Camudi)",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71444824-9",
+    "direccion": "Pucaini 2405",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Russo Favio Marcos",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "20-22509736-5",
+    "direccion": "J. M. Rosas  73",
+    "localidad": "Morón"
+  },
+  {
+    "razonSocial": "S.M. CombustiblesS.R.L.",
+    "responsable": "Ramon",
+    "inspector": "Ramon",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70860110-8",
+    "direccion": "Ruta Panamericana y San Martin S/Nº",
+    "localidad": "Pilar"
+  },
+  {
+    "razonSocial": "Sanlap S.A.",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-69796333-9",
+    "direccion": "Juan Diaz de Solis 351",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Seis Erre Alimentos SA",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Mensual",
+    "extra": "septiembre - octubre",
+    "cuit": "30-70731762-7",
+    "direccion": "Jose Bianco 758",
+    "localidad": "El Palomar"
+  },
+  {
+    "razonSocial": "Sembrado S.A.",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-68580577-0",
+    "direccion": "Pucaini 2255",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Servicios Transcar S.R.L.",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70771217-8",
+    "direccion": "Los Patos 2022",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Silicom Argentina (Artiga)",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "30-53916677-4",
+    "direccion": "ARTIGAS 2633",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "Silicom Argentina (Arregui)",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "30-53916677-4",
+    "direccion": "Arregui 2495",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "Silicom Argentina (S Justo)",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "30-53916677-4",
+    "direccion": "Argentina 3950",
+    "localidad": "San Justo"
+  },
+  {
+    "razonSocial": "Sleep Calm",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "33-71715226-9",
+    "direccion": "9 DE JULIO 1450  (Panamericana KM 29)",
+    "localidad": "El Talar"
+  },
+  {
+    "razonSocial": "Recagno Borghini Maria Paula (EX Southern Cross Chemical)",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70935280-2",
+    "direccion": "Miranda 562",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "St Labhras S.A.",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71405835-1",
+    "direccion": "Urano 1777",
+    "localidad": "9 de Abril"
+  },
+  {
+    "razonSocial": "Sulvy II SRL",
+    "responsable": "Barbara",
+    "inspector": "Barbara/Favio",
+    "frecuencia": "Bimensual",
+    "extra": "Septiembre",
+    "cuit": "30-70056844-6",
+    "direccion": "Miranda 549",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Sur Polimeros S.A.",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70264553-7",
+    "direccion": "A. Subtte. A. Fernandez  1958",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "TAG ENERGY SRL (ex Tagliaferri Alejandro y  Fernandez Viviana B. S.H.)",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71542442-4",
+    "direccion": "AV. MITRE  2568",
+    "localidad": "San Miguel"
+  },
+  {
+    "razonSocial": "Tagliaferri Mario  Alfredo",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "23-14455964-9",
+    "direccion": "TRIUNVIRATO 4913",
+    "localidad": "San Martin"
+  },
+  {
+    "razonSocial": "Tecmyl SA",
+    "responsable": "Laura",
+    "inspector": "Laura",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "33-71204826-9",
+    "direccion": "Sbtte Fernandez 2263",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Tecnoindustria SA",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70786135-1",
+    "direccion": "Juan Diaz de Solis 408",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "TecnoTrans S.R.L.",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-65440517-0",
+    "direccion": "Lebenson 1081",
+    "localidad": "Bella Vista"
+  },
+  {
+    "razonSocial": "Teva Construcciones SA",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71606676-9",
+    "direccion": "Pasaje Gonzalez 70",
+    "localidad": "San Fernando"
+  },
+  {
+    "razonSocial": "Textil Itas S.A.",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "septiembre",
+    "cuit": "30-50405534-1",
+    "direccion": "L. MARIA CAMPOS 690",
+    "localidad": "Morón"
+  },
+  {
+    "razonSocial": "Thomart GNC S.A.",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "33-70099786-9",
+    "direccion": "Av Vergara  1561",
+    "localidad": "Villa Tesei"
+  },
+  {
+    "razonSocial": "Tinpet S.R.L.",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70924867-3",
+    "direccion": "AV. MITRE 5455",
+    "localidad": "Caseros"
+  },
+  {
+    "razonSocial": "Tomé Dos Anjos Goncalves  y Carlos Alberto Calicchio",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70793106-6",
+    "direccion": "PRINGLES 3111",
+    "localidad": "Caseros"
+  },
+  {
+    "razonSocial": "Topigraf S.A.",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71118306-6",
+    "direccion": "Atuel 185",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Torneria Tesei",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70997463-3",
+    "direccion": "Balboa 311",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Transporte Luke CABA",
+    "responsable": "Agus",
+    "inspector": "Cintia",
+    "frecuencia": "Bimensual",
+    "extra": "septiembre",
+    "cuit": "30-70798524-7",
+    "direccion": "Guarani 321/315",
+    "localidad": "C.A.B.A."
+  },
+  {
+    "razonSocial": "Tubosolka",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71493391-0",
+    "direccion": "Roma 112",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Unical S.A.",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-63110485-8",
+    "direccion": "Uspallata 671",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Utility S.A.",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-63112559-6",
+    "direccion": "J. Berduck  1875",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Valkin SRL",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71167283-0",
+    "direccion": "Urano 1803",
+    "localidad": "9 de Abril"
+  },
+  {
+    "razonSocial": "Vallejo Roberto Daniel",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "20-10233359-5",
+    "direccion": "Roma 273",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Velez Sarfield Cow",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-70838652-5",
+    "direccion": "M. Maza 3372",
+    "localidad": "Lanus"
+  },
+  {
+    "razonSocial": "Verge Roberto Daniel",
+    "responsable": "Daniel",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": "octubre",
+    "cuit": "24-14715827-1",
+    "direccion": "Conesa 1986",
+    "localidad": "Muñiz"
+  },
+  {
+    "razonSocial": "Vignona  Francisco Nicolás",
+    "responsable": "Agus",
+    "inspector": "Barbara/Favio",
+    "frecuencia": "Bimensual",
+    "extra": "Octubre",
+    "cuit": "20-93338012-3",
+    "direccion": "Juan Manuel de Rosas 11550",
+    "localidad": "Laferrere"
+  },
+  {
+    "razonSocial": "Villaverde Hugo Domingo - Viviendas Oasis",
+    "responsable": "Jorge",
+    "inspector": "Jorge",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "23-13020038-9",
+    "direccion": "Roma  139/49",
+    "localidad": "Hurlingham"
+  },
+  {
+    "razonSocial": "Warpfil S.A.",
+    "responsable": "Agus",
+    "inspector": "Daniel",
+    "frecuencia": "Bimensual",
+    "extra": "septiembre",
+    "cuit": "30-70837159-5",
+    "direccion": "Valentin Gomez 151",
+    "localidad": "Haedo"
+  },
+  {
+    "razonSocial": "Weretka Basilio (Metrofilm)",
+    "responsable": "Daniel",
+    "inspector": "Silvia",
+    "frecuencia": "bimensual",
+    "extra": "octubre",
+    "cuit": "20-12849789-8",
+    "direccion": "Perez Galdos 9535",
+    "localidad": "Pablo Podesta"
+  },
+  {
+    "razonSocial": "Zamer Rene Carlos",
+    "responsable": "Agus",
+    "inspector": "Barbara/Favio",
+    "frecuencia": "bimensual",
+    "extra": "Octubre",
+    "cuit": "20-10881879-5",
+    "direccion": "Av Juan Manuel de Rosas 11836",
+    "localidad": "Laferrere"
+  },
+  {
+    "razonSocial": "Zerovnick  Estanislao Martin",
+    "responsable": "Silvia",
+    "inspector": "Silvia",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "20-11171899-8",
+    "direccion": "Roetger 457",
+    "localidad": "Villa Tesei"
+  },
+  {
+    "razonSocial": "Zito  Jose Luis",
+    "responsable": "Daniel",
+    "inspector": "Daniel",
+    "frecuencia": "Semanal",
+    "extra": null,
+    "cuit": "20-07776436-5",
+    "direccion": "Pte Perón 1340",
+    "localidad": "Lomas de Zamora"
+  },
+  {
+    "razonSocial": "Grupo Coes S.A. (Chubut 1988)",
+    "responsable": "Pablo",
+    "inspector": "Pablo",
+    "frecuencia": "Bimensual",
+    "extra": null,
+    "cuit": "30-71543775-5",
+    "direccion": "Chubut 1718",
+    "localidad": "Tigre"
+  }
+]

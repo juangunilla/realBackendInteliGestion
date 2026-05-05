@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 
 const vibracionesSheme = new mongoose.Schema({
   //datos del cliente
@@ -27,6 +28,10 @@ const vibracionesSheme = new mongoose.Schema({
       autopopulate: true,
     },
   ],
+  fechaDerivado: {
+    type: Date,
+    default: null,
+  },
 
   profesionalCargo: [
     {
@@ -69,5 +74,6 @@ const vibracionesSheme = new mongoose.Schema({
   },
 });
 vibracionesSheme.plugin(require("mongoose-autopopulate"));
+vibracionesSheme.plugin(studyProfessionalAssignmentPlugin, { studyLabel: 'el estudio de Vibraciones' });
 
 module.exports = mongoose.model("vibraciones", vibracionesSheme);

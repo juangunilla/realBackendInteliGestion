@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const autopopulate = require('mongoose-autopopulate');
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 
 // Esquema base reutilizable
 const aspBase = {
@@ -24,6 +25,7 @@ const aspBase = {
   }],
   fechaDerivado: {
     type: Date,
+    default: null,
   },
   profesionalCargo: [{
     type: mongoose.Schema.Types.ObjectId,
@@ -84,6 +86,7 @@ const aspBase = {
 // Esquema principal
 const aspSchema = new mongoose.Schema(aspBase, { timestamps: true });
 aspSchema.plugin(autopopulate);
+aspSchema.plugin(studyProfessionalAssignmentPlugin, { studyLabel: 'el estudio ASP General' });
 
 // Esquema historial
 const aspHistSchema = new mongoose.Schema(

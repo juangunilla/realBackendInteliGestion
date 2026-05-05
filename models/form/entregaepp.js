@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { setVencimiento } = require('./../../middlewares/venci.'); // Importa el middleware
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 
 // Define el esquema
 const entregaeppSchema = new mongoose.Schema({
@@ -18,6 +19,10 @@ const entregaeppSchema = new mongoose.Schema({
     ref: 'profesionales',
     autopopulate: true
 }],
+  fechaDerivado: {
+    type: Date,
+    default: null,
+  },
   confeccion: {
     type: Date
   },
@@ -38,6 +43,7 @@ const entregaeppSchema = new mongoose.Schema({
 
 // Añade el plugin de autopopulación
 entregaeppSchema.plugin(require('mongoose-autopopulate'));
+entregaeppSchema.plugin(studyProfessionalAssignmentPlugin, { studyLabel: 'el estudio de Entrega EPP' });
 
 // Exporta el modelo
 const Entregaepp = mongoose.model("entregaepp", entregaeppSchema);

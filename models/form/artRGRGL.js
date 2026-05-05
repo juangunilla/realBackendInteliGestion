@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const autopopulate = require('mongoose-autopopulate');
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 
 // Esquema base (reutilizable)
 const ArtrgrglSchema = {
@@ -55,6 +56,7 @@ const ArtrgrglSchema = {
 // Modelo principal
 const artSchema = new mongoose.Schema(ArtrgrglSchema, { timestamps: true });
 artSchema.plugin(autopopulate);
+artSchema.plugin(studyProfessionalAssignmentPlugin, { studyLabel: 'el estudio ART RGRGL' });
 
 // Modelo historial (clonado + fecha de archivo)
 const artHistSchema = new mongoose.Schema(

@@ -1,10 +1,12 @@
 const { Antisinestral, AntisinestralHist } = require('../../models/form/antisinestral');
 const { crearConHistorial } = require('../../helpers/historialHelper');
+const { normalizeFechaDerivadoPayload } = require('../../helpers/fechaDerivado');
 
 // Crear un nuevo estudio con historial
 const postItem = async (req, res) => {
   try {
-    const { cliente, establecimiento, ...datos } = req.body;
+    const { cliente, establecimiento, ...rawDatos } = req.body;
+    const datos = normalizeFechaDerivadoPayload(rawDatos);
 
     const clienteId = Array.isArray(cliente) ? cliente[0] : cliente;
     const establecimientoId = Array.isArray(establecimiento) ? establecimiento[0] : establecimiento;
@@ -39,7 +41,7 @@ const postItem = async (req, res) => {
 // Actualizar un estudio activo
 const updateItem = async (req, res) => {
   const { _id } = req.params;
-  const update = req.body;
+  const update = normalizeFechaDerivadoPayload(req.body);
   try {
     await Antisinestral.findByIdAndUpdate(
       _id,

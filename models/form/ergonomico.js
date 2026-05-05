@@ -1,5 +1,6 @@
 const { create } = require('express-handlebars')
 const mongoose = require('mongoose')
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 
 const ergonomicoSheme = new mongoose.Schema({
 
@@ -31,6 +32,10 @@ const ergonomicoSheme = new mongoose.Schema({
         ref: 'profesionales',
         autopopulate: true
     }],
+    fechaDerivado: {
+        type: Date,
+        default: null,
+    },
     profesionalCargo: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'profesionales',
@@ -54,5 +59,6 @@ const ergonomicoSheme = new mongoose.Schema({
 }
 )
 ergonomicoSheme.plugin(require('mongoose-autopopulate'));
+ergonomicoSheme.plugin(studyProfessionalAssignmentPlugin, { studyLabel: 'el estudio Ergonómico' });
 
 module.exports = mongoose.model("ergonomico", ergonomicoSheme)

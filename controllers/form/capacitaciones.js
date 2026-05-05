@@ -1,8 +1,9 @@
 const { registrarAccion } = require('../../helpers/auditHelper');
 const capacitaciones = require('../../models/form/capacitaciones')
+const { normalizeFechaDerivadoPayload } = require('../../helpers/fechaDerivado');
 
 const postItem = async (req, res) => {
-    const { body } = req
+    const body = normalizeFechaDerivadoPayload(req.body)
     console.log(body)
     const data = await capacitaciones.create(body)
     await registrarAccion({
@@ -22,7 +23,7 @@ const postItem = async (req, res) => {
 //actualizar items
 const updateItem= async(req,res)=>{
     const {_id}=req.params
-    const update=req.body
+    const update = normalizeFechaDerivadoPayload(req.body)
     try{
         await capacitaciones.findByIdAndUpdate(_id, {$set:update},{useFindAndModify: true})
         res.send(`Actualizaste datos del estudio${_id}`)

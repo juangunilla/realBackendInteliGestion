@@ -1,0 +1,22 @@
+const express = require('express');
+
+const {
+  getItems,
+  postItem,
+  updateItem,
+  deleteItem,
+  getHistorial,
+  getHistorialByClienteEst,
+} = require('../../controllers/form/residuosEspeciales');
+
+const router = express.Router();
+
+router.get('/', getItems);
+router.post('/', postItem);
+router.put('/:_id', updateItem);
+router.delete('/:_id', deleteItem);
+
+router.get('/historial', getHistorial);
+router.get('/historial/:clienteId/:establecimientoId', getHistorialByClienteEst);
+
+module.exports = router;

@@ -1,6 +1,7 @@
 
 const { create } = require('express-handlebars');
 const mongoose= require('mongoose');
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 const Schema= mongoose.Schema;
 const otSheme= new mongoose.Schema({
     cliente:{
@@ -35,5 +36,9 @@ const otSheme= new mongoose.Schema({
 }
 )
 otSheme.plugin(require('mongoose-autopopulate'));
+otSheme.plugin(studyProfessionalAssignmentPlugin, {
+    assignmentField: 'asignado',
+    studyLabel: 'la Orden de Trabajo'
+});
 
 module.exports=mongoose.model("ot",otSheme)

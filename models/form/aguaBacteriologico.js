@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 
 const aguabacteriologicoSchema = new mongoose.Schema({
   cliente: [{ type: mongoose.Schema.Types.ObjectId, ref: 'clientes', autopopulate: true }],
@@ -20,6 +21,7 @@ const aguabacteriologicoSchema = new mongoose.Schema({
 });
 
 aguabacteriologicoSchema.plugin(require('mongoose-autopopulate'));
+aguabacteriologicoSchema.plugin(studyProfessionalAssignmentPlugin, { studyLabel: 'el estudio de Agua Bacteriológico' });
 
 // Activo
 const AguaBacteriologico = mongoose.model("aguabacteriologico", aguabacteriologicoSchema);

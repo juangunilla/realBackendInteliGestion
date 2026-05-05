@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 const establecimientos = require('../models/establecimientos');
 const profesionales = require('../models/profesionales');
+require('../models/ciuu'); // Asegura que el modelo esté registrado para autopopulate
 const Users = require('../models/user');
 const webPush = require('../config/webpush');
+const clientes = require('../models/clientes');
 const { obtenerEstudiosActivosPorEstablecimiento } = require('../helpers/estudiosActivosHelper');
 const { registrarAccion } = require('../helpers/auditHelper');
 
@@ -43,27 +45,93 @@ const registrarCambioProfesional = (establecimiento, profesionalId, { desde, has
 };
 
 const postItem = async (req, res) => {
-    const { body } = req
-    const {calle,numero} = body
-    console.log(body)
-    const existingEstable = await establecimientos.findOne({ calle,numero });
-    if (existingEstable) {
-        return res.status(400).send({
-            status: 'Establecimiento existente',
-            message: 'Este establecimiento ya existe'
+    try {
+        const { body, query } = req;
+        const { calle, numero } = body;
+        const clienteInput =
+            body.clienteId ||
+            body.cliente_id ||
+            query.clienteId ||
+            query.cliente_id ||
+            body.cliente;
+
+        const clienteId =
+            (clienteInput && typeof clienteInput === 'object' && clienteInput._id) ||
+            clienteInput;
+
+        let cliente = null;
+        if (clienteId) {
+            cliente = await clientes.findById(clienteId);
+            if (!cliente) {
+                return res.status(404).send({
+                    status: 'error',
+                    message: 'El cliente indicado no existe',
+                });
+            }
+        }
+
+        let data = null;
+        if (calle && numero) {
+            const existingEstable = await establecimientos.findOne({ calle, numero });
+            if (existingEstable) {
+                data = existingEstable;
+            }
+        }
+
+        if (!data) {
+            data = await establecimientos.create(body);
+        }
+        let clienteActualizado = null;
+
+        if (cliente) {
+            const resumen = {
+                _id: data._id,
+                nombre: data.nombre,
+                direccion: data.direccion,
+                localidad: data.localidad,
+                frecuencia: data.frecuencia,
+                responsable: data.responsable,
+            };
+
+            const yaAsignado = (cliente.establecimientos || []).some(
+                (e) => `${e._id}` === `${data._id}`
+            );
+
+            if (!yaAsignado) {
+                cliente.establecimientos = cliente.establecimientos || [];
+                cliente.establecimientos.push(resumen);
+                clienteActualizado = await cliente.save();
+                await clienteActualizado.populate('establecimientos._id');
+            } else {
+                clienteActualizado = await clientes
+                    .findById(cliente._id)
+                    .populate('establecimientos._id');
+            }
+        }
+
+        await registrarAccion({
+            user: req.user,
+            action: "create",
+            entity: "establecimiento",
+            entityId: data._id,
+            description: "Se creó un nuevo establecimiento",
+            payload: body,
+        });
+
+        return res.send({
+            status: 'success',
+            data,
+            cliente: clienteActualizado,
+            warning: cliente ? undefined : 'No se indicó cliente; el establecimiento quedó sin asignar',
+        });
+    } catch (error) {
+        console.error('Error al crear establecimiento:', error);
+        return res.status(500).send({
+            status: 'error',
+            message: 'No se pudo crear el establecimiento',
+            error: error.message,
         });
     }
-    const data = await establecimientos.create(body);
-    await registrarAccion({
-        user: req.user,
-        action: "create",
-        entity: "establecimiento",
-        entityId: data._id,
-        description: "Se creó un nuevo establecimiento",
-        payload: body,
-    });
-    res.send({ data });
-    console.log(data);
 };
 
 
@@ -290,8 +358,23 @@ const deleteItem = async (req, res) => {
  
 
 const profile = async (req, res) => {
-    const { _id } = req.params;
+    const rawId =
+        (req.params && req.params._id) ||
+        req.query._id ||
+        req.query.id ||
+        (req.body && req.body._id);
+
+    const _id = (rawId || '').toString().trim();
+
     try {
+        if (!mongoose.isValidObjectId(_id)) {
+            return res.status(400).send({
+                status: "error",
+                message: "El ID de establecimiento no es válido",
+                id: _id || null,
+            });
+        }
+
         const data = await establecimientos
             .findById(_id)
             .populate('historialProfesionales.profesional');
@@ -306,7 +389,7 @@ const profile = async (req, res) => {
             data
         });
     } catch (error) {
-        console.log(error);
+        console.log('Error al obtener establecimiento:', error);
         return res.status(500).send({
             status: "error",
             message: "Error al obtener establecimiento"

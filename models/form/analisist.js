@@ -18,7 +18,7 @@ const baseSchema = {
     type: Date,
   },
   vencimiento: {
-    type: Date,
+    type: Date, 
   },
   observacion: {
     type: String,

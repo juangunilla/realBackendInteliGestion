@@ -4,12 +4,14 @@ const {
 } = require('../../models/form/CapacitacionIncendio');
 const { crearConHistorial } = require('../../helpers/historialHelper');
 const { registrarAccion } = require('../../helpers/auditHelper');
+const { normalizeFechaDerivadoPayload } = require('../../helpers/fechaDerivado');
 
 const ENTITY = 'capacitacion_incendio';
 
 const postItem = async (req, res) => {
   try {
-    const { cliente, establecimiento, ...datos } = req.body;
+    const { cliente, establecimiento, ...rawDatos } = req.body;
+    const datos = normalizeFechaDerivadoPayload(rawDatos);
 
     const clienteId = Array.isArray(cliente) ? cliente[0] : cliente;
     const establecimientoId = Array.isArray(establecimiento)
@@ -49,9 +51,10 @@ const postItem = async (req, res) => {
 const updateItem = async (req, res) => {
   const { _id } = req.params;
   try {
+    const update = normalizeFechaDerivadoPayload(req.body);
     const data = await CapacitacionIncendio.findByIdAndUpdate(
       _id,
-      { $set: req.body },
+      { $set: update },
       { new: true }
     );
 
@@ -68,7 +71,7 @@ const updateItem = async (req, res) => {
       entity: ENTITY,
       entityId: _id,
       description: 'Actualización de capacitación de incendio',
-      changes: req.body,
+      changes: update,
     });
 
     return res.json({ status: 'success', data });

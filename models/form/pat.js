@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 
 const patSheme = new mongoose.Schema({
     //datos del cliente
@@ -26,7 +27,8 @@ const patSheme = new mongoose.Schema({
         autopopulate: true
     }],
     fechaDerivado: {
-        type: Date
+        type: Date,
+        default: null,
     },
 
     // datos de cotización 
@@ -70,5 +72,6 @@ const patSheme = new mongoose.Schema({
 }
 )
 patSheme.plugin(require('mongoose-autopopulate'));
+patSheme.plugin(studyProfessionalAssignmentPlugin, { studyLabel: 'el estudio PAT' });
 
 module.exports = mongoose.model("pat", patSheme)

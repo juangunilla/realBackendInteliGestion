@@ -4,6 +4,7 @@ const databaseController = require('../controllers/dbInfo'); // Ajusta la ruta s
 
 // Ruta para obtener información sobre la base de datos
 router.get('/', databaseController.getDatabaseInfo);
+router.get('/storage', databaseController.getDatabaseStorage);
 
 // Resto de tus rutas y configuración aquí
 

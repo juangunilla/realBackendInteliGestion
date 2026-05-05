@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 
 // Define el esquema
 const verificacionhSchema = new mongoose.Schema(
@@ -24,6 +25,10 @@ const verificacionhSchema = new mongoose.Schema(
         autopopulate: true,
       },
     ],
+    fechaDerivado: {
+      type: Date,
+      default: null,
+    },
     verificar: {
       type: String,
     },
@@ -50,6 +55,7 @@ const verificacionhSchema = new mongoose.Schema(
 
 // Añade el plugin de autopopulación
 verificacionhSchema.plugin(require("mongoose-autopopulate"));
+verificacionhSchema.plugin(studyProfessionalAssignmentPlugin, { studyLabel: 'el estudio de Verificación' });
 
 // Exporta el modelo
 const verificacion = mongoose.model("verificacion", verificacionhSchema);

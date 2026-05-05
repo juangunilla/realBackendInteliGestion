@@ -3,10 +3,11 @@ const establecimientos = require('../models/establecimientos');
 
 const postItem = async (req, res) => {
   const { body } = req;
-  const { cuit } = body;
+  const cuit = (body.cuit || '').toString().trim();
   
-  // Validar la longitud del cuit
-  if (cuit.length !== 11) {
+  // Validar la longitud del cuit (solo dígitos)
+  const cuitLimpio = cuit.replace(/\D/g, '');
+  if (cuitLimpio.length !== 11) {
     return res.status(400).send({
       status: 'cuit invalido',
       message: 'El CUIT debe tener exactamente 11 dígitos',
@@ -42,16 +43,13 @@ const getItems = async (req, res) => {
 
     if (normalizedSearch) {
       const safeRegex = new RegExp(escapeRegex(normalizedSearch), 'i');
-      const orConditions = [
+    const orConditions = [
         { rozonSocial: safeRegex },
         { razonSocial: safeRegex },
         { nombreFantasia: safeRegex },
         { domicilio: safeRegex },
+        { cuit: safeRegex },
       ];
-
-      if (/^\d+$/.test(normalizedSearch)) {
-        orConditions.push({ cuit: Number(normalizedSearch) });
-      }
 
       searchQuery = { $or: orConditions };
     }
@@ -59,7 +57,7 @@ const getItems = async (req, res) => {
     const total = await clientes.countDocuments(searchQuery);
     const clientesData = await clientes
       .find(searchQuery)
-      .populate('establecimientos')
+      .populate('establecimientos._id')
       .limit(parseInt(limit))
       .skip((parseInt(page) - 1) * parseInt(limit));
 
@@ -81,20 +79,83 @@ const getItems = async (req, res) => {
 
 
 const creandoEstablecimiento = async (req, res) => {
-    const { _id } = req.params
-    const { establecimientos } = req.body
-    await clientes.findByIdAndUpdate(
-        _id,
-        {
-            $push: { establecimientos: establecimientos }
-        },
+    try {
+        const { _id } = req.params;
+        const establecimientoPayload =
+            req.body.establecimiento || req.body.establecimientos || req.body;
 
-        { useFindAndModify: true }
-    )
-    return res.status(200).send({
-        status: "success",
-    })
-}
+        if (!establecimientoPayload || typeof establecimientoPayload !== 'object') {
+            return res.status(400).send({
+                status: 'error',
+                message: 'Debes enviar los datos del establecimiento',
+            });
+        }
+
+        const cliente = await clientes.findById(_id);
+        if (!cliente) {
+            return res.status(404).send({
+                status: 'error',
+                message: 'El cliente no existe',
+            });
+        }
+
+        let establecimientoDoc = null;
+        if (establecimientoPayload._id) {
+            establecimientoDoc = await establecimientos.findById(establecimientoPayload._id);
+            if (!establecimientoDoc) {
+                return res.status(404).send({
+                    status: 'error',
+                    message: 'El establecimiento indicado no existe',
+                });
+            }
+        } else {
+            establecimientoDoc = await establecimientos.create(establecimientoPayload);
+        }
+
+        const resumen = {
+            _id: establecimientoDoc._id,
+            nombre: establecimientoDoc.nombre,
+            direccion: establecimientoDoc.direccion,
+            localidad: establecimientoDoc.localidad,
+            frecuencia: establecimientoDoc.frecuencia,
+            responsable: establecimientoDoc.responsable,
+        };
+
+        const yaAsignado = (cliente.establecimientos || []).some(
+            (e) => `${e._id}` === `${establecimientoDoc._id}`
+        );
+        if (yaAsignado) {
+            const clienteActualizado = await clientes
+                .findById(_id)
+                .populate('establecimientos._id');
+            return res.status(200).send({
+                status: 'success',
+                data: clienteActualizado,
+                warning: 'El establecimiento ya estaba asignado',
+            });
+        }
+
+        const clienteActualizado = await clientes
+            .findByIdAndUpdate(
+                _id,
+                { $push: { establecimientos: resumen } },
+                { new: true }
+            )
+            .populate('establecimientos._id');
+
+        return res.status(200).send({
+            status: 'success',
+            data: clienteActualizado,
+        });
+    } catch (error) {
+        console.error('Error al crear establecimiento para cliente:', error);
+        return res.status(500).send({
+            status: 'error',
+            message: 'No se pudo crear el establecimiento',
+            error: error.message,
+        });
+    }
+};
 
 
 
@@ -103,7 +164,7 @@ const deleteItem = async (req, res) => {
   
     try {
       // Verificar si el cliente existe
-      const existingClient = await clientes.findById(_id).populate('establecimientos');
+      const existingClient = await clientes.findById(_id).populate('establecimientos._id');
       if (!existingClient) {
         return res.status(404).json({
           status: 'error',
@@ -112,7 +173,11 @@ const deleteItem = async (req, res) => {
       }
   
       // Eliminar los establecimientos relacionados al cliente
-      await establecimientos.deleteMany({ _id: { $in: existingClient.establecimientos } });
+      const establecimientosIds = (existingClient.establecimientos || [])
+        .map((e) => e?._id)
+        .filter(Boolean);
+
+      await establecimientos.deleteMany({ _id: { $in: establecimientosIds } });
   
       // Eliminar el cliente
       await clientes.findByIdAndDelete(_id);

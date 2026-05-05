@@ -1,13 +1,76 @@
+const mongoose = require('mongoose');
 const { AspCanerias, AspCaneriasHist } = require('../../models/form/aspCanerias');
 const { crearConHistorial } = require('../../helpers/historialHelper');
+const { normalizeFechaDerivadoPayload } = require('../../helpers/fechaDerivado');
+
+const normalizeId = (value) => {
+  if (Array.isArray(value)) {
+    return normalizeId(value[0]);
+  }
+
+  if (value && typeof value === 'object') {
+    if (mongoose.isValidObjectId(value)) {
+      return value;
+    }
+
+    const candidate = value._id || value.id;
+    if (candidate) {
+      return normalizeId(candidate);
+    }
+
+    return null;
+  }
+
+  if (typeof value === 'string') {
+    const trimmed = value.trim();
+    if (!trimmed) {
+      return null;
+    }
+
+    if (
+      (trimmed.startsWith('{') && trimmed.endsWith('}')) ||
+      (trimmed.startsWith('[') && trimmed.endsWith(']'))
+    ) {
+      try {
+        return normalizeId(JSON.parse(trimmed));
+      } catch (error) {
+        return trimmed;
+      }
+    }
+
+    return trimmed;
+  }
+
+  return value ?? null;
+};
 
 // Crear nuevo Informe Cañerías con historial
 const postItem = async (req, res) => {
   try {
-    const { cliente, establecimiento, ...datos } = req.body;
+    const { cliente, establecimiento, ...rawDatos } = req.body;
+    const datos = normalizeFechaDerivadoPayload(rawDatos);
 
-    const clienteId = Array.isArray(cliente) ? cliente[0] : cliente;
-    const establecimientoId = Array.isArray(establecimiento) ? establecimiento[0] : establecimiento;
+    const clienteId = normalizeId(cliente);
+    const establecimientoId = normalizeId(establecimiento);
+
+    const invalidFields = [];
+    if (!mongoose.isValidObjectId(clienteId)) {
+      invalidFields.push('cliente');
+    }
+    if (!mongoose.isValidObjectId(establecimientoId)) {
+      invalidFields.push('establecimiento');
+    }
+    if (invalidFields.length) {
+      console.warn('Solicitud ASP Cañerías inválida:', {
+        invalidFields,
+        cliente: clienteId,
+        establecimiento: establecimientoId,
+      });
+      return res.status(400).json({
+        status: 'error',
+        message: `El campo ${invalidFields.join(' y ')} debe ser un ObjectId válido`,
+      });
+    }
 
     const payload = {
       cliente: clienteId,
@@ -40,7 +103,8 @@ const postItem = async (req, res) => {
 const updateItem = async (req, res) => {
   const { _id } = req.params;
   try {
-    const actualizado = await AspCanerias.findByIdAndUpdate(_id, req.body, { new: true });
+    const update = normalizeFechaDerivadoPayload(req.body);
+    const actualizado = await AspCanerias.findByIdAndUpdate(_id, update, { new: true });
     if (!actualizado) {
       return res.status(404).json({ status: 'error', message: 'ASP Cañerías no encontrado' });
     }

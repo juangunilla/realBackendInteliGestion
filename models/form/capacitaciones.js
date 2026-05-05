@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 
 const capacitacionesSheme = new mongoose.Schema({
     //datos del cliente
@@ -22,6 +23,10 @@ const capacitacionesSheme = new mongoose.Schema({
         ref: 'profesionales',
         autopopulate: true
     }],
+    fechaDerivado: {
+        type: Date,
+        default: null,
+    },
     
     profesionalCargo: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -58,5 +63,6 @@ const capacitacionesSheme = new mongoose.Schema({
 }
 )
 capacitacionesSheme.plugin(require('mongoose-autopopulate'));
+capacitacionesSheme.plugin(studyProfessionalAssignmentPlugin, { studyLabel: 'la Capacitación' });
 
 module.exports = mongoose.model("capacitacion", capacitacionesSheme)

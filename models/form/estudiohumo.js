@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { setVencimiento } = require('./../../middlewares/venci.'); // Importa el middleware
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 
 // Define el esquema
 const estudiohSchema = new mongoose.Schema({
@@ -18,6 +19,10 @@ const estudiohSchema = new mongoose.Schema({
     ref: 'profesionales',
     autopopulate: true
 }],
+  fechaDerivado: {
+    type: Date,
+    default: null,
+  },
   confeccion: {
     type: Date
   },
@@ -36,6 +41,7 @@ const estudiohSchema = new mongoose.Schema({
  
 // Añade el plugin de autopopulación
 estudiohSchema.plugin(require('mongoose-autopopulate'));
+estudiohSchema.plugin(studyProfessionalAssignmentPlugin, { studyLabel: 'el Estudio de Humo' });
 
 // Exporta el modelo
 const estudioh = mongoose.model("estudioh", estudiohSchema);
