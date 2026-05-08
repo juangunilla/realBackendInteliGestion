@@ -1,14 +1,23 @@
-const setVencimiento = (schema) => {
-    schema.pre('save', function (next) {
-      if (this.confeccion) {
-        // Si la fecha de confección está definida, establece la fecha de vencimiento tres meses después
-        const vencimientoDate = new Date(this.confeccion);
-        vencimientoDate.setMonth(vencimientoDate.getMonth() + 3);
-        this.vencimiento = vencimientoDate;
-      }
-      next();
-    });
-  };
-  
-  module.exports = { setVencimiento };
+const calculateVencimientoFromConfeccion = (confeccion, monthsToAdd = 3) => {
+  if (!confeccion) {
+    return null;
+  }
+
+  const vencimientoDate = new Date(confeccion);
+  vencimientoDate.setMonth(vencimientoDate.getMonth() + monthsToAdd);
+  return vencimientoDate;
+};
+
+const setVencimiento = (schema, options = {}) => {
+  const { monthsToAdd = 3 } = options;
+
+  schema.pre('save', function (next) {
+    if (this.confeccion) {
+      this.vencimiento = calculateVencimientoFromConfeccion(this.confeccion, monthsToAdd);
+    }
+    next();
+  });
+};
+
+module.exports = { setVencimiento, calculateVencimientoFromConfeccion };
   

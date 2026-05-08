@@ -105,6 +105,12 @@ const leysapSchema = new mongoose.Schema(
     segundoSimulacroFecha: {
       type: Date,
     },
+    tercerSimulacroFecha: {
+      type: Date,
+    },
+    cuartoSimulacroFecha: {
+      type: Date,
+    },
     comentarios: {
       type: String,
       trim: true,

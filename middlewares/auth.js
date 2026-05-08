@@ -36,7 +36,11 @@ exports.auth = (req, res, next) => {
     }
 
     // Agregar datos de usuario a request
-    req.user = payload;
+    req.user = {
+      ...payload,
+      _id: payload._id || payload.id || null,
+      id: payload.id || payload._id || null,
+    };
 
     // Incluir el rol en la cabecera
     res.setHeader('X-User-Rol', payload.rol);

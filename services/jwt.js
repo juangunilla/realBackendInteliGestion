@@ -5,6 +5,7 @@ const secret = "clave-secret-inteli-0393";
 const createTokens = (user) => {
   const payload = {
     id: user.id,
+    _id: user._id || user.id,
     nombreyapellido: user.nombreyapellido,
     rol: user.rol,
     correo: user.correo,

@@ -26,8 +26,8 @@ const controlExtintorSchema = new mongoose.Schema({
   timestamps: true  // Habilita las marcas de tiempo automáticas
 });
 
-// Aplica el middleware
-setVencimiento(controlExtintorSchema);
+// Aplica el middleware con un mes extra para control de extintores
+setVencimiento(controlExtintorSchema, { monthsToAdd: 4 });
 
 // Añade el plugin de autopopulación
 controlExtintorSchema.plugin(require('mongoose-autopopulate'));

@@ -37,6 +37,18 @@ const baseSchema = {
   comentario: {
     type: String,
   },
+  planoEvac: {
+    type: Boolean,
+    default: false,
+  },
+  croquisUea: {
+    type: Boolean,
+    default: false,
+  },
+  croquisInc: {
+    type: Boolean,
+    default: false,
+  },
 
   // Datos de cotización
   cotizacion: {

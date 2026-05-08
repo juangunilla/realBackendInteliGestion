@@ -2,11 +2,17 @@ const transporter = require('../config/mailer');
 const User = require('../models/user');
 const Profesional = require('../models/profesionales');
 const {
+  getNotificationPreferenceDefaults,
+  getUserNotificationPreference,
+} = require('../services/notificationPreferences');
+const {
   extractClienteNombre,
   extractEstablecimientoNombre,
   resolveNotificationUrl,
-  sendPushToUsers,
+  sendPushToUser,
 } = require('./pushNotifications');
+
+const PROFESSIONAL_ASSIGNED_TO_STUDY = 'PROFESSIONAL_ASSIGNED_TO_STUDY';
 
 const normalizeReferenceIds = (value) => {
   const items = Array.isArray(value) ? value : value ? [value] : [];
@@ -52,19 +58,29 @@ const buildNotificationContent = (studyDoc, options = {}) => {
   };
 };
 
-const sendMailToRecipients = async (emails, payload) => {
-  for (const email of emails) {
-    try {
-      await transporter.sendMail({
-        from: process.env.MAIL_FROM || 'gestionsepa@inteli.com.ar',
-        to: email,
-        subject: payload.mailSubject,
-        text: payload.mailText,
-      });
-    } catch (error) {
-      console.error(`No se pudo enviar el correo de asignación a ${email}:`, error.message);
-    }
+const sendMailToRecipient = async (email, payload) => {
+  try {
+    await transporter.sendMail({
+      from: process.env.MAIL_FROM || 'gestionsepa@inteli.com.ar',
+      to: email,
+      subject: payload.mailSubject,
+      text: payload.mailText,
+    });
+  } catch (error) {
+    console.error(`No se pudo enviar el correo de asignación a ${email}:`, error.message);
   }
+};
+
+const shouldSendChannel = (preference, channel) => {
+  if (channel === 'inApp') {
+    return preference.inAppEnabled;
+  }
+
+  if (channel === 'email') {
+    return preference.emailEnabled;
+  }
+
+  return false;
 };
 
 const notifyStudyProfessionalAssignment = async ({
@@ -105,22 +121,43 @@ const notifyStudyProfessionalAssignment = async ({
     ]);
 
     const payload = buildNotificationContent(studyDoc, options);
-    await sendPushToUsers(users, payload, { realtimeEvent: 'study:assignment' });
+    const fallbackPreference = getNotificationPreferenceDefaults(
+      PROFESSIONAL_ASSIGNED_TO_STUDY
+    );
 
-    const emails = new Set();
-    users.forEach((userDoc) => {
-      if (userDoc?.correo) {
-        emails.add(userDoc.correo.trim().toLowerCase());
+    for (const userDoc of users) {
+      const preference =
+        (await getUserNotificationPreference(
+          userDoc._id,
+          PROFESSIONAL_ASSIGNED_TO_STUDY
+        )) || fallbackPreference;
+
+      if (shouldSendChannel(preference, 'inApp')) {
+        await sendPushToUser(userDoc, payload, { realtimeEvent: 'study:assignment' });
       }
-    });
+
+      if (shouldSendChannel(preference, 'email') && userDoc?.correo) {
+        await sendMailToRecipient(userDoc.correo.trim().toLowerCase(), payload);
+      }
+    }
+
+    const userProfessionalIds = new Set(
+      users.flatMap((userDoc) => normalizeReferenceIds(userDoc?.profesional))
+    );
+    const fallbackEmails = new Set();
     professionals.forEach((professional) => {
-      if (professional?.correo) {
-        emails.add(professional.correo.trim().toLowerCase());
+      const professionalId = professional?._id ? `${professional._id}` : null;
+      if (
+        professional?.correo &&
+        professionalId &&
+        !userProfessionalIds.has(professionalId)
+      ) {
+        fallbackEmails.add(professional.correo.trim().toLowerCase());
       }
     });
 
-    if (emails.size) {
-      await sendMailToRecipients([...emails], payload);
+    for (const email of fallbackEmails) {
+      await sendMailToRecipient(email, payload);
     }
   } catch (error) {
     console.error('Falló la notificación de asignación del estudio:', error);
@@ -205,5 +242,6 @@ module.exports = {
   getAddedProfessionalIds,
   normalizeReferenceIds,
   notifyStudyProfessionalAssignment,
+  shouldSendChannel,
   studyProfessionalAssignmentPlugin,
 };

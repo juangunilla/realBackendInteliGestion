@@ -1,6 +1,7 @@
 const res = require('express/lib/response')
 const { default: mongoose, model } = require('mongoose');
 const controlExtintor = require('../../models/form/controlExtintor')
+const { calculateVencimientoFromConfeccion } = require('../../middlewares/vencitrimestral');
 
 const postItem = async (req, res) => {
     const { body } = req
@@ -18,7 +19,10 @@ const postItem = async (req, res) => {
 
 const updateItem= async(req,res)=>{
     const {_id}=req.params
-    const update=req.body
+    const update={ ...req.body }
+    if (update.confeccion) {
+        update.vencimiento = calculateVencimientoFromConfeccion(update.confeccion, 4);
+    }
     try{
         await controlExtintor.findByIdAndUpdate(_id, {$set:update},{useFindAndModify: true})
         res.send(`Actualizaste datos del estudio${_id}`)
