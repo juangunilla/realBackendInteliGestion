@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const check = require('../../middlewares/auth');
 
 const {
   getItems,
@@ -14,13 +15,13 @@ const {
 // =========================
 
 // Obtener todos
-router.get('/', getItems);
+router.get('/', check.auth, getItems);
 
 // Crear nuevo
-router.post('/', postItem);
+router.post('/', check.auth, postItem);
 
 // Actualizar por ID
-router.put('/:_id', updateItem);
+router.put('/:_id', check.auth, updateItem);
 
 
 // =========================
@@ -28,10 +29,10 @@ router.put('/:_id', updateItem);
 // =========================
 
 // Obtener todo el historial
-router.get('/historial', getHistorial);
+router.get('/historial', check.auth, getHistorial);
 
 // Obtener historial filtrado
-router.get('/historial/:clienteId/:establecimientoId', getHistorialByClienteEst);
+router.get('/historial/:clienteId/:establecimientoId', check.auth, getHistorialByClienteEst);
 
 
 module.exports = router;

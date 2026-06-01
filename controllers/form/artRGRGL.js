@@ -1,10 +1,15 @@
 const { Artrgrgl, ArtrgrglHist } = require('../../models/form/artRGRGL');
 const { crearConHistorial } = require('../../helpers/historialHelper');
+const {
+  normalizeEntregaDocumentacionPayload,
+  normalizeEntregaDocumentacionDocs,
+} = require('../../helpers/entregaDocumentacion');
 
 // Crear nuevo ARTRGRGL con historial
 const postItem = async (req, res) => {
   try {
-    const { cliente, establecimiento, ...datos } = req.body;
+    const normalizedBody = normalizeEntregaDocumentacionPayload(req.body);
+    const { cliente, establecimiento, ...datos } = normalizedBody;
 
     const clienteId = Array.isArray(cliente) ? cliente[0] : cliente;
     const establecimientoId = Array.isArray(establecimiento) ? establecimiento[0] : establecimiento;
@@ -40,7 +45,12 @@ const postItem = async (req, res) => {
 const updateItem = async (req, res) => {
   const { _id } = req.params;
   try {
-    const actualizado = await Artrgrgl.findByIdAndUpdate(_id, req.body, { new: true });
+    const update = normalizeEntregaDocumentacionPayload(req.body);
+    const actualizado = await Artrgrgl.findByIdAndUpdate(
+      _id,
+      { $set: update },
+      { new: true, runValidators: true }
+    );
     if (!actualizado) {
       return res.status(404).json({ status: 'error', message: 'ARTRGRGL no encontrada' });
     }
@@ -55,7 +65,7 @@ const updateItem = async (req, res) => {
 const getItems = async (req, res) => {
   try {
     const data = await Artrgrgl.find({});
-    res.json({ status: 'success', data });
+    res.json({ status: 'success', data: normalizeEntregaDocumentacionDocs(data) });
   } catch (error) {
     console.error('Error al obtener ARTRGRGL:', error);
     res.status(500).json({ status: 'error', message: 'Error al obtener ARTRGRGL' });
@@ -81,7 +91,7 @@ const deleteItem = async (req, res) => {
 const getHistorial = async (req, res) => {
   try {
     const data = await ArtrgrglHist.find({});
-    res.json({ status: 'success', data });
+    res.json({ status: 'success', data: normalizeEntregaDocumentacionDocs(data) });
   } catch (error) {
     console.error('Error al obtener historial ARTRGRGL:', error);
     res.status(500).json({ status: 'error', message: 'Error al obtener historial ARTRGRGL' });
@@ -96,7 +106,7 @@ const getHistorialByClienteEst = async (req, res) => {
       cliente: clienteId,
       establecimiento: establecimientoId,
     });
-    res.json({ status: 'success', data });
+    res.json({ status: 'success', data: normalizeEntregaDocumentacionDocs(data) });
   } catch (error) {
     console.error('Error al obtener historial ARTRGRGL filtrado:', error);
     res.status(500).json({ status: 'error', message: 'Error al obtener historial ARTRGRGL filtrado' });

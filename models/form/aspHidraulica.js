@@ -35,7 +35,12 @@ aspSchema.pre('validate', function aspHidraulicaPreValidate(next) {
 aspSchema.plugin(autopopulate);
 aspSchema.plugin(studyProfessionalAssignmentPlugin, { studyLabel: 'el estudio ASP Hidráulica' });
 
-const aspHistSchema = new mongoose.Schema({ ...aspBase, archivadoEn: { type: Date, default: Date.now } }, { timestamps: true });
+const aspHistSchema = new mongoose.Schema({ ...aspBase, archivadoEn: { type: Date, default: Date.now },
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
+}, { timestamps: true });
 aspHistSchema.pre('validate', function aspHidraulicaHistPreValidate(next) {
   const errorMessage = getStudyDateOrderError(this);
 

@@ -21,6 +21,9 @@ const {
   ResiduosEspeciales,
 } = require('../models/form/residuosEspeciales');
 const { Termografia } = require('../models/form/termografia');
+const {
+  normalizeEntregaDocumentacionDoc,
+} = require('../helpers/entregaDocumentacion');
 
 const getTodosLosEstudiosDelMes = async () => {
   const start = moment().startOf('month').toDate();
@@ -49,22 +52,22 @@ const getTodosLosEstudiosDelMes = async () => {
   ]);
 
     return [
-    ...(aguaB || []).map(e => ({ tipo: 'Agua Bacteriológico', ...e._doc })),
-    ...(aguaF || []).map(e => ({ tipo: 'Agua Físico-Químico', ...e._doc })),
-    ...(patData || []).map(e => ({ tipo: 'PAT', ...e._doc })),
-    ...(aspData || []).map(e => ({ tipo: 'ASP', ...e._doc })),
-    ...(capData || []).map(e => ({ tipo: 'Capacitaciones', ...e._doc })),
-    ...(certificadoRedIncendioData || []).map(e => ({ tipo: 'Certificado Red Incendio', ...e._doc })),
-    ...(iluruidoData || []).map(e => ({ tipo: 'Iluminación y Ruido', ...e._doc })),
-    ...(ergoData || []).map(e => ({ tipo: 'Ergonómico', ...e._doc })),
-    ...(artData || []).map(e => ({ tipo: 'ART', ...e._doc })),
-    ...(vibraData || []).map(e => ({ tipo: 'Vibración', ...e._doc })),
-    ...(antiData || []).map(e => ({ tipo: 'Antisinestral', ...e._doc })),
-    ...(verifData || []).map(e => ({ tipo: 'Verificación', ...e._doc })),
-    ...(humoData || []).map(e => ({ tipo: 'Estudio de Humo', ...e._doc })),
-    ...(eppData || []).map(e => ({ tipo: 'Entrega EPP', ...e._doc })),
-    ...(residuosEspecialesData || []).map(e => ({ tipo: 'Residuos Especiales', ...e._doc })),
-    ...(termografiaData || []).map(e => ({ tipo: 'Termografía', ...e._doc })),
+    ...(aguaB || []).map(e => ({ tipo: 'Agua Bacteriológico', ...normalizeEntregaDocumentacionDoc(e) })),
+    ...(aguaF || []).map(e => ({ tipo: 'Agua Físico-Químico', ...normalizeEntregaDocumentacionDoc(e) })),
+    ...(patData || []).map(e => ({ tipo: 'PAT', ...normalizeEntregaDocumentacionDoc(e) })),
+    ...(aspData || []).map(e => ({ tipo: 'ASP', ...normalizeEntregaDocumentacionDoc(e) })),
+    ...(capData || []).map(e => ({ tipo: 'Capacitaciones', ...normalizeEntregaDocumentacionDoc(e) })),
+    ...(certificadoRedIncendioData || []).map(e => ({ tipo: 'Certificado Red Incendio', ...normalizeEntregaDocumentacionDoc(e) })),
+    ...(iluruidoData || []).map(e => ({ tipo: 'Iluminación y Ruido', ...normalizeEntregaDocumentacionDoc(e) })),
+    ...(ergoData || []).map(e => ({ tipo: 'Ergonómico', ...normalizeEntregaDocumentacionDoc(e) })),
+    ...(artData || []).map(e => ({ tipo: 'ART', ...normalizeEntregaDocumentacionDoc(e) })),
+    ...(vibraData || []).map(e => ({ tipo: 'Vibración', ...normalizeEntregaDocumentacionDoc(e) })),
+    ...(antiData || []).map(e => ({ tipo: 'Antisinestral', ...normalizeEntregaDocumentacionDoc(e) })),
+    ...(verifData || []).map(e => ({ tipo: 'Verificación', ...normalizeEntregaDocumentacionDoc(e) })),
+    ...(humoData || []).map(e => ({ tipo: 'Estudio de Humo', ...normalizeEntregaDocumentacionDoc(e) })),
+    ...(eppData || []).map(e => ({ tipo: 'Entrega EPP', ...normalizeEntregaDocumentacionDoc(e) })),
+    ...(residuosEspecialesData || []).map(e => ({ tipo: 'Residuos Especiales', ...normalizeEntregaDocumentacionDoc(e) })),
+    ...(termografiaData || []).map(e => ({ tipo: 'Termografía', ...normalizeEntregaDocumentacionDoc(e) })),
   ];
 
 };

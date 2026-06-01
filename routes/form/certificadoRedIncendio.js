@@ -1,4 +1,5 @@
 const express = require('express');
+const check = require('../../middlewares/auth');
 
 const {
   getItems,
@@ -11,12 +12,12 @@ const {
 
 const router = express.Router();
 
-router.get('/', getItems);
-router.post('/', postItem);
-router.put('/:_id', updateItem);
-router.delete('/:_id', deleteItem);
+router.get('/', check.auth, getItems);
+router.post('/', check.auth, postItem);
+router.put('/:_id', check.auth, updateItem);
+router.delete('/:_id', check.auth, deleteItem);
 
-router.get('/historial', getHistorial);
-router.get('/historial/:clienteId/:establecimientoId', getHistorialByClienteEst);
+router.get('/historial', check.auth, getHistorial);
+router.get('/historial/:clienteId/:establecimientoId', check.auth, getHistorialByClienteEst);
 
 module.exports = router;

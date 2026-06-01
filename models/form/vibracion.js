@@ -72,6 +72,10 @@ const vibracionesSheme = new mongoose.Schema({
   incluido: {
     type: String,
   },
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
 });
 vibracionesSheme.plugin(require("mongoose-autopopulate"));
 vibracionesSheme.plugin(studyProfessionalAssignmentPlugin, { studyLabel: 'el estudio de Vibraciones' });

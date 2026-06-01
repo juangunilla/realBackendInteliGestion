@@ -28,7 +28,10 @@ const otSheme= new mongoose.Schema({
     estado:{
         type:String
     },
-    
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
 },
 {
     timestamps:true,

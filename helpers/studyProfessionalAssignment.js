@@ -14,6 +14,35 @@ const {
 
 const PROFESSIONAL_ASSIGNED_TO_STUDY = 'PROFESSIONAL_ASSIGNED_TO_STUDY';
 
+const normalizeAssignmentValue = (value) => {
+  if (Array.isArray(value)) {
+    return value.filter(Boolean);
+  }
+
+  return value ? [value] : [];
+};
+
+const normalizeAssignmentUpdate = (update, assignmentField) => {
+  if (!update || typeof update !== 'object') {
+    return update;
+  }
+
+  if (Object.prototype.hasOwnProperty.call(update, assignmentField)) {
+    update[assignmentField] = normalizeAssignmentValue(update[assignmentField]);
+  }
+
+  if (
+    update.$set &&
+    Object.prototype.hasOwnProperty.call(update.$set, assignmentField)
+  ) {
+    update.$set[assignmentField] = normalizeAssignmentValue(
+      update.$set[assignmentField]
+    );
+  }
+
+  return update;
+};
+
 const normalizeReferenceIds = (value) => {
   const items = Array.isArray(value) ? value : value ? [value] : [];
 
@@ -167,6 +196,7 @@ const notifyStudyProfessionalAssignment = async ({
 const studyProfessionalAssignmentPlugin = (schema, options = {}) => {
   schema.pre('save', async function studyAssignmentPreSave(next) {
     const assignmentField = getAssignmentField(options);
+    this[assignmentField] = normalizeAssignmentValue(this[assignmentField]);
 
     if (this.isNew) {
       this._previousProfessionalIds = [];
@@ -208,6 +238,7 @@ const studyProfessionalAssignmentPlugin = (schema, options = {}) => {
 
   schema.pre('findOneAndUpdate', async function studyAssignmentPreUpdate(next) {
     const assignmentField = getAssignmentField(options);
+    normalizeAssignmentUpdate(this.getUpdate(), assignmentField);
 
     try {
       const previousDoc = await this.model
@@ -240,6 +271,8 @@ const studyProfessionalAssignmentPlugin = (schema, options = {}) => {
 module.exports = {
   buildNotificationContent,
   getAddedProfessionalIds,
+  normalizeAssignmentUpdate,
+  normalizeAssignmentValue,
   normalizeReferenceIds,
   notifyStudyProfessionalAssignment,
   shouldSendChannel,

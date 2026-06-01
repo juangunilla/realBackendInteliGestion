@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 
 const cargaFuegoSheme = new mongoose.Schema({
     //datos del cliente
@@ -11,6 +12,11 @@ const cargaFuegoSheme = new mongoose.Schema({
     establecimiento: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'establecimientos',
+        autopopulate: true,
+    }],
+    profesional: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'profesionales',
         autopopulate: true,
     }],
 
@@ -66,9 +72,15 @@ const cargaFuegoSheme = new mongoose.Schema({
         ref: 'user',
         default: null
     },
-
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
 }
 )
 cargaFuegoSheme.plugin(require('mongoose-autopopulate'));
+cargaFuegoSheme.plugin(studyProfessionalAssignmentPlugin, {
+    studyLabel: 'la carga de fuego'
+});
 
 module.exports = mongoose.model("cargaDeFuego", cargaFuegoSheme)

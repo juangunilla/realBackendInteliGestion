@@ -33,3 +33,20 @@ test('syncCertificadoRedIncendioFields admite cotizacion Si/No como alias de cot
   assert.equal(payload.cotizacion, 'No');
   assert.equal(payload.observaciones, 'Sin cotizar');
 });
+
+test('syncCertificadoRedIncendioFields normaliza checks, domicilio y alias seDerivaA', () => {
+  const payload = {
+    cheqBomba: 'Si',
+    cheqRedInc: '0',
+    domicilio: ' Av. Siempreviva 123 ',
+    seDerivaA: 'Proveedor externo',
+  };
+
+  syncCertificadoRedIncendioFields(payload);
+
+  assert.equal(payload.cheqBomba, true);
+  assert.equal(payload.cheqRedInc, false);
+  assert.equal(payload.domicilio, 'Av. Siempreviva 123');
+  assert.equal(payload.derivado, 'Proveedor externo');
+  assert.equal(payload.seDerivaA, 'Proveedor externo');
+});

@@ -51,6 +51,32 @@ const normalizeSiNoValue = (value) => {
   return undefined;
 };
 
+const normalizeBooleanValue = (value) => {
+  if (value === null || value === undefined || value === '') {
+    return false;
+  }
+
+  if (typeof value === 'boolean') {
+    return value;
+  }
+
+  if (typeof value === 'number') {
+    return value === 1;
+  }
+
+  if (typeof value === 'string') {
+    const normalized = value.trim().toLowerCase();
+    if (['si', 'sí', 'true', '1'].includes(normalized)) {
+      return true;
+    }
+    if (['no', 'false', '0'].includes(normalized)) {
+      return false;
+    }
+  }
+
+  return Boolean(value);
+};
+
 const syncObservaciones = (data) => {
   const observacion = data.observacion || data.observaciones || data.comentarios || '';
 
@@ -92,11 +118,23 @@ const syncCertificadoRedIncendioFields = (target) => {
     }
   });
 
-  ['derivado', 'estado', 'observacion', 'observaciones', 'comentarios'].forEach((field) => {
+  if (Object.prototype.hasOwnProperty.call(data, 'seDerivaA')) {
+    data.derivado = data.seDerivaA;
+  }
+
+  ['derivado', 'seDerivaA', 'estado', 'observacion', 'observaciones', 'comentarios', 'domicilio'].forEach((field) => {
     if (Object.prototype.hasOwnProperty.call(data, field)) {
       data[field] = normalizeValue(data[field]) || '';
     }
   });
+
+  if (Object.prototype.hasOwnProperty.call(data, 'cheqBomba')) {
+    data.cheqBomba = normalizeBooleanValue(data.cheqBomba);
+  }
+
+  if (Object.prototype.hasOwnProperty.call(data, 'cheqRedInc')) {
+    data.cheqRedInc = normalizeBooleanValue(data.cheqRedInc);
+  }
 
   syncCotizado(data);
   syncObservaciones(data);
@@ -110,6 +148,11 @@ const baseSchema = {
     ref: 'clientes',
     autopopulate: true,
   }],
+  domicilio: {
+    type: String,
+    default: '',
+    trim: true,
+  },
   establecimiento: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'establecimientos',
@@ -134,6 +177,14 @@ const baseSchema = {
     ref: 'profesionales',
     autopopulate: true,
   }],
+  cheqBomba: {
+    type: Boolean,
+    default: false,
+  },
+  cheqRedInc: {
+    type: Boolean,
+    default: false,
+  },
   fechaRevision: {
     type: Date,
     default: null,
@@ -176,6 +227,10 @@ const baseSchema = {
     default: '',
     trim: true,
   },
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
 };
 
 const certificadoRedIncendioSchema = new mongoose.Schema(

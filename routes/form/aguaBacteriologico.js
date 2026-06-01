@@ -15,7 +15,7 @@ router.post('/', check.auth, postItem);
 router.put('/:_id', check.auth, updateItem);
 
 // Historial
-router.get('/historial', getHistorial); 
-router.get('/historial/:clienteId/:establecimientoId', getHistorialByClienteEst);
+router.get('/historial', check.auth, getHistorial); 
+router.get('/historial/:clienteId/:establecimientoId', check.auth, getHistorialByClienteEst);
 
 module.exports = router;

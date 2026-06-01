@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const autopopulate = require('mongoose-autopopulate');
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 
 const addOneYear = (value) => {
   if (!value) return null;
@@ -78,6 +79,11 @@ const baseSchema = {
     ref: 'establecimientos',
     autopopulate: true,
   }],
+  profesional: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'profesionales',
+    autopopulate: true,
+  }],
   numeroTableros: {
     type: Number,
     default: null,
@@ -100,6 +106,10 @@ const baseSchema = {
     default: '',
     trim: true,
   },
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
 };
 
 const termografiaSchema = new mongoose.Schema(
@@ -131,6 +141,9 @@ termografiaSchema.pre('findOneAndUpdate', function termografiaPreUpdate(next) {
 });
 
 termografiaSchema.plugin(autopopulate);
+termografiaSchema.plugin(studyProfessionalAssignmentPlugin, {
+  studyLabel: 'la termografía',
+});
 
 const termografiaHistSchema = new mongoose.Schema(
   {

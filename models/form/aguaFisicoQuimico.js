@@ -46,6 +46,15 @@ const baseSchema = {
   fechaMuestra: {
     type: Date,
   },
+  fechaMuestraAceptadaClienteAt: {
+    type: Date,
+    default: null,
+  },
+  fechaMuestraAceptadaClienteEmail: {
+    type: String,
+    trim: true,
+    default: null,
+  },
   vencimiento: {
     type: Date,
   },
@@ -60,6 +69,10 @@ const baseSchema = {
   comentarios: {
     type: String,
   },
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
 };
 
 // Esquema principal

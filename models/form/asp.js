@@ -84,7 +84,12 @@ const aspBase = {
 };
 
 // Esquema principal
-const aspSchema = new mongoose.Schema(aspBase, { timestamps: true });
+const aspSchema = new mongoose.Schema(aspBase, { timestamps: true,
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
+});
 aspSchema.plugin(autopopulate);
 aspSchema.plugin(studyProfessionalAssignmentPlugin, { studyLabel: 'el estudio ASP General' });
 

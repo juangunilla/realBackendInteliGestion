@@ -95,6 +95,8 @@ const capacitacionEnEmergenciasSchema = new mongoose.Schema(
     fechaDerivado: { type: Date, default: null },
     profesionalCapacitador: [referenceConfig('profesionales')],
     fechaCapacitacion: { type: Date },
+    fechaCapacitacionAceptadaClienteAt: { type: Date, default: null },
+    fechaCapacitacionAceptadaClienteEmail: { type: String, trim: true, default: null },
     vencimientoCapacitacion: { type: Date },
     estadoVigencia: {
       type: String,
@@ -108,6 +110,10 @@ const capacitacionEnEmergenciasSchema = new mongoose.Schema(
     },
     informesSimulacro: { type: [simulacroSchema], default: [] },
     comentarios: { type: String, default: '' },
+    entregaDocumentacion: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );

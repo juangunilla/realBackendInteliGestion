@@ -23,7 +23,14 @@ const Capacitacion = require('../models/form/capacitaciones');
 const {
   CertificadoRedIncendio,
 } = require('../models/form/certificadoRedIncendio');
+const { CertifMaqHerram } = require('../models/form/certifMaqHerram');
 const CargaDeFuego = require('../models/form/cargaDeFuego');
+const { CargaTermica } = require('../models/form/cargaTermica');
+const { ControlEstiabs } = require('../models/form/controlEstiabs');
+const { ConvenioProf } = require('../models/form/convenioProf');
+const {
+  DdjjCancerigenos,
+} = require('../models/form/ddjjCancerigenos');
 const ContaminanteLab = require('../models/form/contaminantelab');
 const ControlExtintor = require('../models/form/controlExtintor');
 const Cronoc = require('../models/form/cronoc');
@@ -38,8 +45,11 @@ const Pat = require('../models/form/pat');
 const {
   ResiduosEspeciales,
 } = require('../models/form/residuosEspeciales');
+const RelevamientoTrimesAutoelev = require('../models/form/relevamientoTrimesAutoelev');
+const { SrtRes90515 } = require('../models/form/srtRes90515');
 const { Termografia } = require('../models/form/termografia');
 const Verificacion = require('../models/form/verificacion');
+const { Ventilacion } = require('../models/form/ventilacion');
 const Vibraciones = require('../models/form/vibracion');
 
 const DEFAULT_STATUS_FIELDS = ['estado', 'estadoVigencia', 'cumplimiento'];
@@ -89,6 +99,66 @@ const studyConfigs = [
     apiPath: '/api/analisisderiesgo',
     aliases: ['analisis-de-riego', 'analisisderiesgo', 'analisisderiego'],
   },
+  {
+    key: 'srt-res-905-15',
+    label: 'SRT Res. 905/15',
+    model: SrtRes90515,
+    apiPath: '/api/srtres90515',
+    aliases: ['srtres90515', 'srt-res-90515', 'srt 905/15'],
+  },
+  {
+    key: 'ddjj-cancerigenos',
+    label: 'DDJJ cancerigenos',
+    model: DdjjCancerigenos,
+    apiPath: '/api/ddjjcancerigenos',
+    aliases: ['ddjjcancerigenos', 'ddjj-cancerigenos'],
+  },
+  {
+    key: 'carga-termica',
+    label: 'Carga termica',
+    model: CargaTermica,
+    apiPath: '/api/cargatermica',
+    aliases: ['cargatermica', 'carga-termica'],
+  },
+  {
+    key: 'ventilacion',
+    label: 'Ventilacion',
+    model: Ventilacion,
+    apiPath: '/api/ventilacion',
+    aliases: ['ventilacion'],
+  },
+  {
+    key: 'control-estiabs',
+    label: 'Control Estiabs',
+    model: ControlEstiabs,
+    apiPath: '/api/controlestiabs',
+    aliases: ['controlestiabs', 'control-estiabs'],
+  },
+  {
+    key: 'certif-maq-herram',
+    label: 'Certif Maq. y Herram',
+    model: CertifMaqHerram,
+    apiPath: '/api/certifmaqherram',
+    aliases: ['certifmaqherram', 'certif-maq-herram'],
+  },
+  {
+    key: 'convenio-prof',
+    label: 'Convenio Prof',
+    model: ConvenioProf,
+    apiPath: '/api/convenioprof',
+    aliases: ['convenioprof', 'convenio-prof'],
+  },
+  {
+    key: 'relevamiento-trimes-autoelev',
+    label: 'Relevamiento Trimes de Autoelev.',
+    model: RelevamientoTrimesAutoelev,
+    apiPath: '/api/relevamientotrimesautoelev',
+    aliases: [
+      'relevamientotrimesautoelev',
+      'relevamiento-trimes-autoelev',
+      'relevamiento trimes de autoelev',
+    ],
+  },
   { key: 'antisinestral', label: 'Antisinestral', model: Antisinestral, apiPath: '/api/antisinestral' },
   { key: 'art', label: 'ART', model: Art, apiPath: '/api/art' },
   { key: 'art-rgrgl', label: 'ART RGRGL', model: Artrgrgl, apiPath: '/api/artrgrgl' },
@@ -104,6 +174,7 @@ const studyConfigs = [
     apiPath: '/api/capacitacionriesgoespecifico',
     statusFields: ['estadoVigencia', 'estado'],
     dateFields: ['vencimientoCapacitacion', 'fechaCapacitacion', 'vencimiento'],
+    scheduledDateFields: ['fechaCapacitacion'],
     aliases: ['capacitacionriesgoespecifico'],
   },
   {
@@ -113,6 +184,7 @@ const studyConfigs = [
     apiPath: '/api/capacitacionincendio',
     statusFields: ['estadoVigencia', 'estado'],
     dateFields: ['vencimientoCapacitacion', 'fechaCapacitacion', 'vencimiento'],
+    scheduledDateFields: ['fechaCapacitacion'],
     aliases: ['capacitacionincendio'],
   },
   {
@@ -122,6 +194,7 @@ const studyConfigs = [
     apiPath: '/api/capacitacionautoelevadorres96015',
     statusFields: ['estadoVigencia', 'estado'],
     dateFields: ['vencimientoCapacitacion', 'fechaCapacitacion', 'vencimiento'],
+    scheduledDateFields: ['fechaCapacitacion'],
     aliases: ['capacitacionautoelevadorres96015'],
   },
   {
@@ -131,6 +204,7 @@ const studyConfigs = [
     apiPath: '/api/capacitacionemergencias',
     statusFields: ['estadoVigencia', 'estado'],
     dateFields: ['vencimientoCapacitacion', 'fechaCapacitacion', 'vencimiento'],
+    scheduledDateFields: ['fechaCapacitacion'],
     aliases: ['capacitacionemergencias'],
   },
   {
@@ -201,6 +275,13 @@ const getStudyDateFields = (config = {}) => {
 
 const getStudyAssignmentField = (config = {}) => config.assignmentField || 'profesional';
 
+const getStudyScheduledDateFields = (config = {}) => config.scheduledDateFields || ['fechaMuestra'];
+
+const getStudyScheduledDateField = (config = {}, study = {}) => {
+  const explicitFields = getStudyScheduledDateFields(config);
+  return getFirstPresentValue(study, explicitFields);
+};
+
 const resolveStudyDueDate = (config = {}, study = {}) =>
   getFirstPresentValue(study, getStudyDateFields(config));
 
@@ -209,6 +290,8 @@ const resolveStudyEditPath = (config = {}, studyId) =>
 
 module.exports = {
   getStudyAssignmentField,
+  getStudyScheduledDateFields,
+  getStudyScheduledDateField,
   getStudyConfig,
   getStudyDateFields,
   resolveStudyDueDate,

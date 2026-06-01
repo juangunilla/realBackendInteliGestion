@@ -55,7 +55,11 @@ const ergonomicoSheme = new mongoose.Schema({
     },
     incluido: {
         type: String,
-    }
+    },
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
 }
 )
 ergonomicoSheme.plugin(require('mongoose-autopopulate'));

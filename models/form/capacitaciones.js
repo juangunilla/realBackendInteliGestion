@@ -56,10 +56,23 @@ const capacitacionesSheme = new mongoose.Schema({
         type:String,
         
     },
+    comentarios: {
+        type: String,
+        trim: true,
+        default: ''
+    },
+    temarioCapacitacionesVarias: {
+        type: [String],
+        default: []
+    },
     estado:{
         type:String,
 
-    }
+    },
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
 }
 )
 capacitacionesSheme.plugin(require('mongoose-autopopulate'));

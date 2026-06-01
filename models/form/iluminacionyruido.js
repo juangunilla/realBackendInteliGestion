@@ -64,7 +64,10 @@ const iluminacionyruidoSheme = new mongoose.Schema({
     comentario:{
         type:String
     },
-
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
 }
 )
 iluminacionyruidoSheme.plugin(require('mongoose-autopopulate'));

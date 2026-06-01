@@ -32,6 +32,46 @@ test('getStudyConfig resuelve estudios nuevos y alias normalizados', () => {
   assert.ok(residuosEspeciales);
   assert.equal(residuosEspeciales.key, 'residuos-especiales');
   assert.equal(residuosEspeciales.apiPath, '/api/residuosespeciales');
+
+  const srtRes90515 = getStudyConfig('SRT Res. 905/15');
+  assert.ok(srtRes90515);
+  assert.equal(srtRes90515.key, 'srt-res-905-15');
+  assert.equal(srtRes90515.apiPath, '/api/srtres90515');
+
+  const ddjjCancerigenos = getStudyConfig('DDJJ cancerigenos');
+  assert.ok(ddjjCancerigenos);
+  assert.equal(ddjjCancerigenos.key, 'ddjj-cancerigenos');
+  assert.equal(ddjjCancerigenos.apiPath, '/api/ddjjcancerigenos');
+
+  const cargaTermica = getStudyConfig('Carga termica');
+  assert.ok(cargaTermica);
+  assert.equal(cargaTermica.key, 'carga-termica');
+  assert.equal(cargaTermica.apiPath, '/api/cargatermica');
+
+  const ventilacion = getStudyConfig('Ventilacion');
+  assert.ok(ventilacion);
+  assert.equal(ventilacion.key, 'ventilacion');
+  assert.equal(ventilacion.apiPath, '/api/ventilacion');
+
+  const controlEstiabs = getStudyConfig('Control Estiabs');
+  assert.ok(controlEstiabs);
+  assert.equal(controlEstiabs.key, 'control-estiabs');
+  assert.equal(controlEstiabs.apiPath, '/api/controlestiabs');
+
+  const certifMaqHerram = getStudyConfig('Certif Maq. y Herram');
+  assert.ok(certifMaqHerram);
+  assert.equal(certifMaqHerram.key, 'certif-maq-herram');
+  assert.equal(certifMaqHerram.apiPath, '/api/certifmaqherram');
+
+  const convenioProf = getStudyConfig('Convenio Prof');
+  assert.ok(convenioProf);
+  assert.equal(convenioProf.key, 'convenio-prof');
+  assert.equal(convenioProf.apiPath, '/api/convenioprof');
+
+  const relevamientoTrimesAutoelev = getStudyConfig('Relevamiento Trimes de Autoelev.');
+  assert.ok(relevamientoTrimesAutoelev);
+  assert.equal(relevamientoTrimesAutoelev.key, 'relevamiento-trimes-autoelev');
+  assert.equal(relevamientoTrimesAutoelev.apiPath, '/api/relevamientotrimesautoelev');
 });
 
 test('resolveStudyStatus y resolveStudyDueDate contemplan campos de capacitaciones nuevas', () => {

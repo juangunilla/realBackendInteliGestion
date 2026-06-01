@@ -150,6 +150,10 @@ const baseSchema = {
     default: '',
     trim: true,
   },
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
 };
 
 const residuosEspecialesSchema = new mongoose.Schema(

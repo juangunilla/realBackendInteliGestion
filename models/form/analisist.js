@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const autopopulate = require('mongoose-autopopulate');
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 const { setVencimiento } = require('../../middlewares/venci.'); // Middleware
 
 // Esquema base (se reutiliza en ambos modelos)
@@ -14,6 +15,11 @@ const baseSchema = {
     ref: 'establecimientos',
     autopopulate: true,
   }],
+  profesional: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'profesionales',
+    autopopulate: true,
+  }],
   confeccion: {
     type: Date,
   },
@@ -23,6 +29,28 @@ const baseSchema = {
   observacion: {
     type: String,
   },
+  revalidacionDe: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Analisis',
+    default: null,
+  },
+  estudioOrigen: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Analisis',
+    default: null,
+  },
+  esRevalidacion: {
+    type: Boolean,
+    default: false,
+  },
+  numeroRevalidacion: {
+    type: Number,
+    default: 0,
+  },
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
 };
 
 // Esquema principal
@@ -31,6 +59,9 @@ const analisisSchema = new mongoose.Schema(baseSchema, {
 });
 setVencimiento(analisisSchema);
 analisisSchema.plugin(autopopulate);
+analisisSchema.plugin(studyProfessionalAssignmentPlugin, {
+  studyLabel: 'el análisis',
+});
 
 // Esquema historial (idéntico, también con middleware)
 const analisisHistSchema = new mongoose.Schema(baseSchema, {

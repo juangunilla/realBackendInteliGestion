@@ -20,6 +20,15 @@ const capacitacionAutoelevadorRes96015Schema = new mongoose.Schema(
     fechaCapacitacion: {
       type: Date,
     },
+    fechaCapacitacionAceptadaClienteAt: {
+      type: Date,
+      default: null,
+    },
+    fechaCapacitacionAceptadaClienteEmail: {
+      type: String,
+      trim: true,
+      default: null,
+    },
     vencimientoCapacitacion: {
       type: Date,
     },
@@ -55,7 +64,11 @@ const capacitacionAutoelevadorRes96015Schema = new mongoose.Schema(
       trim: true,
       default: '',
     },
-  },
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
+},
   { timestamps: true }
 );
 

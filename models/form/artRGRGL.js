@@ -51,6 +51,10 @@ const ArtrgrglSchema = {
   incluido: {
     type: String,
   },
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  },
 };
 
 // Modelo principal

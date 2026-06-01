@@ -25,7 +25,12 @@ const aspSchema = new mongoose.Schema(aspBase, { timestamps: true });
 aspSchema.plugin(autopopulate);
 aspSchema.plugin(studyProfessionalAssignmentPlugin, { studyLabel: 'el estudio ASP Ensayo Periódico' });
 
-const aspHistSchema = new mongoose.Schema({ ...aspBase, archivadoEn: { type: Date, default: Date.now } }, { timestamps: true });
+const aspHistSchema = new mongoose.Schema({ ...aspBase, archivadoEn: { type: Date, default: Date.now },
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
+}, { timestamps: true });
 aspHistSchema.plugin(autopopulate);
 
 const AspEnsayo = mongoose.model('AspEnsayo', aspSchema);

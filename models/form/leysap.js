@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 
 const addYearsMinusOneDay = (value, years) => {
   if (!value) return undefined;
@@ -71,6 +72,13 @@ const leysapSchema = new mongoose.Schema(
         autopopulate: true,
       },
     ],
+    profesional: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'profesionales',
+        autopopulate: true,
+      },
+    ],
     expediente: {
       type: String,
       trim: true,
@@ -119,7 +127,11 @@ const leysapSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
-  },
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
+},
   {
     timestamps: true,
   }
@@ -147,6 +159,9 @@ leysapSchema.pre('findOneAndUpdate', function sapPreUpdate(next) {
 });
 
 leysapSchema.plugin(require('mongoose-autopopulate'));
+leysapSchema.plugin(studyProfessionalAssignmentPlugin, {
+  studyLabel: 'la Ley SAP',
+});
 
 const leysap = mongoose.models.leysap || mongoose.model('leysap', leysapSchema);
 

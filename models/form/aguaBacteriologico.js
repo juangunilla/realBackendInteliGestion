@@ -14,10 +14,23 @@ const aguabacteriologicoSchema = new mongoose.Schema({
   muestra: String,
   protocolo: String,
   fechaMuestra: Date,
+  fechaMuestraAceptadaClienteAt: {
+    type: Date,
+    default: null,
+  },
+  fechaMuestraAceptadaClienteEmail: {
+    type: String,
+    trim: true,
+    default: null,
+  },
   vencimiento: Date,
   resultado: { type: String, enum: ['Apto', 'No apto', 'N/A'] },
   estado: { type: String, enum: ['Vigente', 'Vencido', 'Por vencer', 'Pendiente', 'Antiguo', 'Sin fecha'] },
-  comentarios: String
+  comentarios: String,
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
 });
 
 aguabacteriologicoSchema.plugin(require('mongoose-autopopulate'));

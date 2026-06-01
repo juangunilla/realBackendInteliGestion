@@ -1,5 +1,6 @@
 const { create } = require('express-handlebars')
 const mongoose = require('mongoose')
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 
 const artClientSheme = new mongoose.Schema({
 
@@ -11,6 +12,11 @@ const artClientSheme = new mongoose.Schema({
     establecimiento: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'establecimientos',
+        autopopulate: true,
+    }],
+    profesional: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'profesionales',
         autopopulate: true,
     }],
     nombre:{
@@ -27,9 +33,16 @@ const artClientSheme = new mongoose.Schema({
     },
     declarado:{
         type:String
-    }
+    },
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
 }
 )
 artClientSheme.plugin(require('mongoose-autopopulate'));
+artClientSheme.plugin(studyProfessionalAssignmentPlugin, {
+    studyLabel: 'el estudio ART Client'
+});
 
 module.exports = mongoose.model("artclient", artClientSheme)

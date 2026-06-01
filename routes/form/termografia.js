@@ -1,5 +1,6 @@
 const express =require('express')
 const router = express.Router();
+const check = require('../../middlewares/auth')
 const {
   getItems,
   postItem,
@@ -8,10 +9,10 @@ const {
   getHistorialByClienteEst,
 } = require('../../controllers/form/termografia')
 
-router.get('/', getItems)
-router.put('/:_id',updateItem)
-router.post('/',postItem)
-router.get('/historial', getHistorial)
-router.get('/historial/:clienteId/:establecimientoId', getHistorialByClienteEst)
+router.get('/', check.auth, getItems)
+router.put('/:_id',check.auth, updateItem)
+router.post('/',check.auth, postItem)
+router.get('/historial', check.auth, getHistorial)
+router.get('/historial/:clienteId/:establecimientoId', check.auth, getHistorialByClienteEst)
 
 module.exports=router;

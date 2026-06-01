@@ -34,6 +34,10 @@ const estudiohSchema = new mongoose.Schema({
   },
   observacion:{
     type:String
+  },
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
   }
 }, {
   timestamps: true  // Habilita las marcas de tiempo automáticas

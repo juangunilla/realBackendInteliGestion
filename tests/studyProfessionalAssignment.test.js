@@ -1,11 +1,43 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const {
+  normalizeEmptyStringFields,
+} = require('../helpers/fechaDerivado');
 
 const {
   buildNotificationContent,
   getAddedProfessionalIds,
+  normalizeAssignmentUpdate,
+  normalizeAssignmentValue,
   normalizeReferenceIds,
 } = require('../helpers/studyProfessionalAssignment');
+
+test('normalizeAssignmentValue convierte un profesional suelto en array', () => {
+  assert.deepEqual(normalizeAssignmentValue('abc'), ['abc']);
+  assert.deepEqual(normalizeAssignmentValue(['abc', null, 'def']), ['abc', 'def']);
+  assert.deepEqual(normalizeAssignmentValue(null), []);
+});
+
+test('normalizeAssignmentUpdate soporta updates directos y con $set', () => {
+  const directUpdate = { profesional: 'abc' };
+  const setUpdate = { $set: { profesional: 'def' } };
+
+  normalizeAssignmentUpdate(directUpdate, 'profesional');
+  normalizeAssignmentUpdate(setUpdate, 'profesional');
+
+  assert.deepEqual(directUpdate, { profesional: ['abc'] });
+  assert.deepEqual(setUpdate, { $set: { profesional: ['def'] } });
+});
+
+test('normalizeEmptyStringFields convierte strings vacios opcionales en undefined', () => {
+  const normalized = normalizeEmptyStringFields(
+    { resultado: '  ', estado: 'Vigente' },
+    ['resultado']
+  );
+
+  assert.equal(normalized.resultado, undefined);
+  assert.equal(normalized.estado, 'Vigente');
+});
 
 test('normalizeReferenceIds soporta strings, ObjectId-like y arrays', () => {
   const ids = normalizeReferenceIds([

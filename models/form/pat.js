@@ -4,6 +4,11 @@ const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfes
 const patSheme = new mongoose.Schema({
     //datos del cliente
 
+    tipoEstudio: {
+        type: String,
+        enum: ['PAT', 'Proteccion catodica'],
+        default: 'PAT'
+    },
     cliente: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'clientes',
@@ -68,7 +73,10 @@ const patSheme = new mongoose.Schema({
     observacion:{
         type:String
     },
-
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
 }
 )
 patSheme.plugin(require('mongoose-autopopulate'));

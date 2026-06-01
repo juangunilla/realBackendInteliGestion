@@ -52,6 +52,10 @@ const baseSchema = {
   incluido: {
     type: String,
   },
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
 };
 
 // Modelo principal

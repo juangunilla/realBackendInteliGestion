@@ -1,17 +1,35 @@
 const { AguaBacteriologico, AguaBacteriologicoHist } = require('../../models/form/aguaBacteriologico');
 const { crearConHistorial } = require('../../helpers/historialHelper');
+const {
+  normalizeFechaDerivadoPayload,
+  normalizeEmptyStringFields,
+} = require('../../helpers/fechaDerivado');
+
+const normalizeProfesional = (value) => {
+  if (Array.isArray(value)) {
+    return value.filter(Boolean);
+  }
+
+  return value ? [value] : [];
+};
+
+const normalizeAguaBacteriologicoPayload = (payload = {}) =>
+  normalizeEmptyStringFields(normalizeFechaDerivadoPayload(payload), ['resultado']);
 
 // Crear un nuevo estudio
 const postItem = async (req, res) => {
   try {
-    const { cliente, establecimiento, ...datos } = req.body;
+    const { cliente, establecimiento, profesional, ...rawDatos } = req.body;
+    const datos = normalizeAguaBacteriologicoPayload(rawDatos);
 
     const clienteId = Array.isArray(cliente) ? cliente[0] : cliente;
     const establecimientoId = Array.isArray(establecimiento) ? establecimiento[0] : establecimiento;
+    const profesionalIds = normalizeProfesional(profesional);
 
     const payload = {
       cliente: clienteId,
       establecimiento: establecimientoId,
+      profesional: profesionalIds,
       ...datos,
     };
 
@@ -20,7 +38,7 @@ const postItem = async (req, res) => {
       AguaBacteriologicoHist,
       clienteId,
       establecimientoId,
-      datos,
+      payload,
       {
         user: req.user,
         entity: "aguaBacteriologico",
@@ -39,12 +57,17 @@ const postItem = async (req, res) => {
 // Actualizar un estudio activo
 const updateItem = async (req, res) => {
   const { _id } = req.params;
-  const update = req.body;
+  const update = { ...normalizeAguaBacteriologicoPayload(req.body) };
+
+  if (Object.prototype.hasOwnProperty.call(update, 'profesional')) {
+    update.profesional = normalizeProfesional(update.profesional);
+  }
+
   try {
     await AguaBacteriologico.findByIdAndUpdate(
       _id,
       { $set: update },
-      { useFindAndModify: true }
+      { new: true, runValidators: true }
     );
     res.send(`Actualizaste datos del estudio ${_id}`);
   } catch (error) {

@@ -21,6 +21,15 @@ const capacitacionIncendioSchema = new mongoose.Schema(
     fechaCapacitacion: {
       type: Date,
     },
+    fechaCapacitacionAceptadaClienteAt: {
+      type: Date,
+      default: null,
+    },
+    fechaCapacitacionAceptadaClienteEmail: {
+      type: String,
+      trim: true,
+      default: null,
+    },
     vencimientoCapacitacion: {
       type: Date,
     },
@@ -58,7 +67,11 @@ const capacitacionIncendioSchema = new mongoose.Schema(
     incluido: {
       type: String,
     },
-  },
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
+},
   { timestamps: true }
 );
 

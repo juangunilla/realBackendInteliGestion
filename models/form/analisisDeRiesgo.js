@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const autopopulate = require('mongoose-autopopulate');
+const { studyProfessionalAssignmentPlugin } = require('../../helpers/studyProfessionalAssignment');
 const { setVencimiento } = require('../../middlewares/venci.');
 
 // Esquema base reutilizable
@@ -18,6 +19,13 @@ const baseSchema = {
       autopopulate: true,
     },
   ],
+  profesional: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'profesionales',
+      autopopulate: true,
+    },
+  ],
   confeccion: {
     type: Date,
   },
@@ -27,6 +35,24 @@ const baseSchema = {
   observacion: {
     type: String,
   },
+  checklist: {
+    mapa: {
+      type: Boolean,
+      default: false,
+    },
+    rar: {
+      type: Boolean,
+      default: false,
+    },
+    matriz: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  entregaDocumentacion: {
+    type: Boolean,
+    default: false,
+  }
 };
 
 // Esquema principal
@@ -36,6 +62,9 @@ const analisisDeRiesgoSchema = new mongoose.Schema(baseSchema, {
 
 setVencimiento(analisisDeRiesgoSchema);
 analisisDeRiesgoSchema.plugin(autopopulate);
+analisisDeRiesgoSchema.plugin(studyProfessionalAssignmentPlugin, {
+  studyLabel: 'el análisis de riesgo',
+});
 
 // Esquema historial
 const analisisHistSchema = new mongoose.Schema(baseSchema, {

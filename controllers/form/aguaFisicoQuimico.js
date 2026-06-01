@@ -1,10 +1,18 @@
 const { AguaFisicoQuimico, AguaFisicoQuimicoHist } = require('../../models/form/aguaFisicoQuimico');
 const { crearConHistorial } = require('../../helpers/historialHelper');
+const {
+  normalizeFechaDerivadoPayload,
+  normalizeEmptyStringFields,
+} = require('../../helpers/fechaDerivado');
+
+const normalizeAguaFisicoQuimicoPayload = (payload = {}) =>
+  normalizeEmptyStringFields(normalizeFechaDerivadoPayload(payload), ['resultado']);
 
 // Crear un nuevo estudio con historial
 const postItem = async (req, res) => {
   try {
-    const { cliente, establecimiento, ...datos } = req.body;
+    const { cliente, establecimiento, ...rawDatos } = req.body;
+    const datos = normalizeAguaFisicoQuimicoPayload(rawDatos);
 
     const clienteId = Array.isArray(cliente) ? cliente[0] : cliente;
     const establecimientoId = Array.isArray(establecimiento) ? establecimiento[0] : establecimiento;
@@ -39,7 +47,7 @@ const postItem = async (req, res) => {
 // Actualizar un estudio activo
 const updateItem = async (req, res) => {
   const { _id } = req.params;
-  const update = req.body;
+  const update = normalizeAguaFisicoQuimicoPayload(req.body);
   try {
     await AguaFisicoQuimico.findByIdAndUpdate(
       _id,
